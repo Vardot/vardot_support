@@ -1,0 +1,7 @@
+name: Vardot site audit
+type: module
+description: Vardot site audit
+core_version_requirement: ^8 || ^9
+package: Vardot
+dependencies:
+  - site_audit:site_audit
