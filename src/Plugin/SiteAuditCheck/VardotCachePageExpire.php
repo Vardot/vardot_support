@@ -8,7 +8,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\CachePageExpire;
  * Provides the CachePageExpire Check.
  *
  * @SiteAuditCheck(
- *  id = "varbase_cache_page_expire",
+ *  id = "vardot_cache_page_expire",
  *  name = @Translation("Expiration of cached pages"),
  *  description = @Translation("Verify that Drupal\'s cached pages last for at least 5 minutes."),
  *  report = "vardot_performance"
