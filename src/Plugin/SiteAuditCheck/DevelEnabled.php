@@ -2,8 +2,6 @@
 
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
-use Drupal\vardot_site_audit\Plugin\SiteAuditCheck\ModuleStatusBase;
-
 /**
  * Provides the DevelEnabled Check.
  *
@@ -25,4 +23,5 @@ class DevelEnabled extends ModuleStatusBase {
     'machine_name' => 'devel',
     'enabled' => FALSE,
   ];
+
 }

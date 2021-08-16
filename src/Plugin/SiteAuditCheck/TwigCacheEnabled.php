@@ -14,9 +14,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  report = "vardot_performance"
  * )
  */
-
 class TwigCacheEnabled extends SiteAuditCheckBase {
-
 
   /**
    * {@inheritdoc}.

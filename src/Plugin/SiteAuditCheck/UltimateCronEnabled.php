@@ -2,8 +2,6 @@
 
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
-use Drupal\vardot_site_audit\Plugin\SiteAuditCheck\ModuleStatusBase;
-
 /**
  * Provides the UltimateCronEnabled Check.
  *
@@ -43,4 +41,5 @@ class UltimateCronEnabled extends ModuleStatusBase {
     }
     return ModuleStatusBase::AUDIT_CHECK_SCORE_FAIL;
   }
+
 }

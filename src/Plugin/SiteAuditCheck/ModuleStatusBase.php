@@ -7,7 +7,6 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 /**
  * Base class for checking modules statuses.
  */
-
 abstract class ModuleStatusBase extends SiteAuditCheckBase {
 
   /**
@@ -74,4 +73,5 @@ abstract class ModuleStatusBase extends SiteAuditCheckBase {
     }
     return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
   }
+
 }
