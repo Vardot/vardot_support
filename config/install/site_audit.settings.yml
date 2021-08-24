@@ -1,0 +1,16 @@
+reports:
+  block: block
+  cron: cron
+  security: security
+  status: status
+  vardot_performance: vardot_performance
+  vardot_seo: vardot_seo
+  best_practices: 0
+  cache: 0
+  codebase: 0
+  content: 0
+  database: 0
+  extensions: 0
+  users: 0
+  views: 0
+  watchdog: 0
