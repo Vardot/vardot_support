@@ -2,7 +2,6 @@
 
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
-use Drupal\Core\Database\Database;
 use Drupal\site_audit\Plugin\SiteAuditCheck\DatabaseEngine;
 
 /**
