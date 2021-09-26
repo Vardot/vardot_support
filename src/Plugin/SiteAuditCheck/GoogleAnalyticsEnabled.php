@@ -23,4 +23,14 @@ class GoogleAnalyticsEnabled extends ModuleStatusBase {
     'enabled' => TRUE,
   ];
 
+    /**
+   * {@inheritdoc}.
+   */
+  public function calculateScore() {
+    if (\Drupal::moduleHandler()->moduleExists('google_analytics') || \Drupal::moduleHandler()->moduleExists('google_tag')) {
+      return ModuleStatusBase::AUDIT_CHECK_SCORE_PASS;
+    }
+    return ModuleStatusBase::AUDIT_CHECK_SCORE_FAIL;
+  }
+
 }
