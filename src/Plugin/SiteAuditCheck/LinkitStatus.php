@@ -65,12 +65,6 @@ class LinkitStatus extends SiteAuditCheckBase {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
 
-    $config = \Drupal::config('linkit.settings')->get('client_key');
-
-    if (empty($config)) {
-      return SiteAuditCheckBase::AUDIT_CHECK_SCORE_WARN;
-    }
-
     return SiteAuditCheckBase::AUDIT_CHECK_SCORE_PASS;
   }
 
