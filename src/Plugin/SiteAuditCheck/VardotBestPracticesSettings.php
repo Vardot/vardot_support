@@ -3,6 +3,7 @@
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
 use Drupal\site_audit\Plugin\SiteAuditCheck\BestPracticesSettings;
+
 /**
  * Provides the BestPracticesSettings Check.
  *

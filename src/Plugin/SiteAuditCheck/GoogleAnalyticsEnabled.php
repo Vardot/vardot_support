@@ -23,7 +23,7 @@ class GoogleAnalyticsEnabled extends ModuleStatusBase {
     'enabled' => TRUE,
   ];
 
-    /**
+  /**
    * {@inheritdoc}.
    */
   public function calculateScore() {

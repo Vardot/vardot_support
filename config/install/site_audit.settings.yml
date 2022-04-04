@@ -3,6 +3,7 @@ reports:
   cron: cron
   security: security
   status: status
+  vardot_best_practices: vardot_best_practices
   vardot_performance: vardot_performance
   vardot_seo: vardot_seo
   best_practices: 0

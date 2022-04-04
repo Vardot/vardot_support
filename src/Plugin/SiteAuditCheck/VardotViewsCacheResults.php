@@ -16,6 +16,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ViewsCacheResults;
  * )
  */
 class VardotViewsCacheResults extends ViewsCacheResults {
+
   /**
    * {@inheritdoc}.
    */
@@ -29,4 +30,5 @@ class VardotViewsCacheResults extends ViewsCacheResults {
       return $return;
     }
   }
+
 }

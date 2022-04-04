@@ -2,7 +2,6 @@
 
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
-
 /**
  * Provides the Masquerade Check.
  *
