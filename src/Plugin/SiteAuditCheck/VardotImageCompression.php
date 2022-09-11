@@ -21,7 +21,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultFail() {
-    return $this->t('Image compression is less than 75%.');
+    return $this->t('Image compression is not greater than or equal to 75%.');
   }
 
   /**
