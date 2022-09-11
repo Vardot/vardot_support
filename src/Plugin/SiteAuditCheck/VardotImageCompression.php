@@ -9,8 +9,8 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *
  * @SiteAuditCheck(
  *  id = "vardot_image_compression",
- *  name = @Translation("Vardot Image Compression"),
- *  description = @Translation("Check vardot image compression"),
+ *  name = @Translation("Image Compression"),
+ *  description = @Translation("Check image compression quality"),
  *  report = "vardot_performance",
  *  weight = -5,
  * )
@@ -21,7 +21,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultFail() {
-    return $this->t('Image compression is not 75%.');
+    return $this->t('Image compression is not greater than or equal to 75%.');
   }
 
   /**
@@ -33,7 +33,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultPass() {
-    return $this->t('Image compression is 75%');
+    return $this->t('Image compression is greater than or equal to 75%');
   }
 
   /**
@@ -46,7 +46,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    */
   public function getAction() {
     if ($this->score == SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL) {
-      return $this->t('Edit image compression to be 75%.');
+      return $this->t('Edit image compression to be greater than or equal to 75%.');
     }
   }
 
