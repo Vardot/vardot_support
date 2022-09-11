@@ -21,7 +21,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultFail() {
-    return $this->t('Image compression is not 75%.');
+    return $this->t('Image compression is less than 75%.');
   }
 
   /**
@@ -46,7 +46,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    */
   public function getAction() {
     if ($this->score == SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL) {
-      return $this->t('Edit image compression to be 75%.');
+      return $this->t('Edit image compression to be greater than 75%.');
     }
   }
 
