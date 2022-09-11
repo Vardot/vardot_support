@@ -46,7 +46,7 @@ class VardotImageCompression extends SiteAuditCheckBase {
    */
   public function getAction() {
     if ($this->score == SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL) {
-      return $this->t('Edit image compression to be greater than 75%.');
+      return $this->t('Edit image compression to be greater than or equal 75%.');
     }
   }
 
