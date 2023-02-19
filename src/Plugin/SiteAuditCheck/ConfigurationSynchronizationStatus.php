@@ -17,7 +17,7 @@ use Drupal\Core\Config\ImportStorageTransformer;
  *  id = "configuration_synchronization_checked",
  *  name = @Translation("Configuration Synchronization module status"),
  *  description = @Translation("Check to see if Active Configurations matches Stage Configurations"),
- *  report = "vardot_performance",
+ *  report = "vardot_best_practices",
  *  weight = -5,
  * )
  */
