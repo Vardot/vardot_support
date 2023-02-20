@@ -9,12 +9,12 @@ use Drupal\redis\Cache\PhpRedis;
 use Drupal\Core\Cache\CacheBackendInterface;
 
 /**
- * Provides the Redis Dynamic Cache Check.
+ * Provides the Redis/Memcache Dynamic Cache Check.
  *
  * @SiteAuditCheck(
  *  id = "dynamic_cache_enabled",
- *  name = @Translation("Redis Dynamic Cache status"),
- *  description = @Translation("Check to see if redis is properly configured for dynamic cache"),
+ *  name = @Translation("Redis/Memecache Dynamic Cache status"),
+ *  description = @Translation("Check to see if Redis/Memecache is properly configured for dynamic cache"),
  *  report = "vardot_best_practices",
  *  weight = -5,
  * )
@@ -59,7 +59,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultFail() {
-    return $this->t("Redis isn't properly configured for dynamic cache.");
+    return $this->t("Redis/memcache isn't properly configured for dynamic cache.");
   }
 
   /**
@@ -72,7 +72,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultPass() {
-    return $this->t("Redis is properly configured for dynamic cache.");
+    return $this->t("Redis/Memcache is properly configured for dynamic cache.");
   }
 
   /**
@@ -86,7 +86,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    */
   public function getAction() {
     if ($this->score == SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL) {
-      return $this->t('Configure Redis properly for dynamic cache.');
+      return $this->t('Configure Redis/Memcache properly for dynamic cache.');
     }
   }
 
