@@ -92,7 +92,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function calculateScore() {
-    if (!(get_class($this->cache) == "Drupal\redis\Cache\PhpRedi" || get_class($this->cache) ==  "Drupal\memcache\MemcacheBackend")) {
+    if (!(get_class($this->cache) == "Drupal\redis\Cache\PhpRedis" || get_class($this->cache) ==  "Drupal\memcache\MemcacheBackend")) {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
     return SiteAuditCheckBase::AUDIT_CHECK_SCORE_PASS;
