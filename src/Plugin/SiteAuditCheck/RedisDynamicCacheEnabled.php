@@ -5,8 +5,6 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 use Drupal\Core\Database\Connection;
 use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\redis\Cache\PhpRedis;
-use Drupal\Core\Cache\CacheBackendInterface;
 
 /**
  * Provides the Redis/Memcache Dynamic Cache Check.
@@ -94,10 +92,11 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function calculateScore() {
-    if (!($this->cache instanceof PhpRedis)) {
+    if (!(get_class($this->cache) == "Drupal\redis\Cache\PhpRedi" || get_class($this->cache) ==  "Drupal\memcache\MemcacheBackend")) {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
     return SiteAuditCheckBase::AUDIT_CHECK_SCORE_PASS;
   }
 
 }
+
