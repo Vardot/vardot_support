@@ -9,6 +9,7 @@ use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Config\StorageComparer;
 use Drupal\Core\Config\ConfigManagerInterface;
 use Drupal\Core\Config\ImportStorageTransformer;
+use Drupal\Component\Diff\Engine\DiffOpCopy;
 
 /**
  * Provides the Configuration Synchronization Check.
@@ -155,7 +156,7 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
     // Check to if core.extension has changes excluding site_aduit and varbase_site_aduit.
     $core_extension_diff = $this->configManager->diff($this->targetStorage, $syncStorage, "core.extension")->getEdits();
     foreach ($core_extension_diff as $diff_op) {
-      if (!(get_class($diff_op) == "Drupal\Component\Diff\Engine\DiffOpCopy" || $diff_op->orig[0] == "  site_audit: 0" || $diff_op->orig[0] == "  vardot_site_audit: 0")) {
+      if (!($diff_op instanceof DiffOpCopy || $diff_op->orig[0] == "  site_audit: 0" || $diff_op->orig[0] == "  vardot_site_audit: 0")) {
         array_push($core_extension_changes, $diff_op);
       }
     }
