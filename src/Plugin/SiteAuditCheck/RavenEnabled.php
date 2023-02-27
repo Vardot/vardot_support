@@ -34,7 +34,7 @@ class RavenEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function getResultPass() {
-    return $this->t('Raven modules is enabled.');
+    return $this->t('Raven modules is enabled and connected with "sentry.in.vardot.com".');
   }
 
   /**
