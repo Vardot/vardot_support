@@ -27,7 +27,8 @@ class RavenEnabled extends SiteAuditCheckBase {
   /**
    * {@inheritdoc}.
    */
-  public function getResultInfo() {}
+  public function getResultInfo() {
+  }
 
   /**
    * {@inheritdoc}.
@@ -52,7 +53,7 @@ class RavenEnabled extends SiteAuditCheckBase {
     }
 
     if ($this->score == SiteAuditCheckBase::AUDIT_CHECK_SCORE_WARN) {
-      return $this->t('Configure Raven.');
+      return $this->t('Configure Raven and check the connection is with "sentry.in.vardot.com".');
     }
   }
 
@@ -65,9 +66,11 @@ class RavenEnabled extends SiteAuditCheckBase {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
 
-    $config = \Drupal::config('raven.settings')->get('client_key');
+    $client_key = \Drupal::config('raven.settings')->get('client_key');
+    $client_secret = \Drupal::config('raven.settings')->get('client_secret');
+    $public_dsn = \Drupal::config('raven.settings')->get('public_dsn');
 
-    if (empty($config)) {
+    if (empty($client_key) || !str_contains($client_secret, '@sentry.in.vardot.com/') || !str_contains($public_dsn, '@sentry.in.vardot.com/')) {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_WARN;
     }
 
