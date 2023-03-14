@@ -4,4 +4,4 @@ description: Ensures a Drupal site's compliance with Vardot Support.
 core_version_requirement: ^8 || ^9 || ^10
 package: Vardot
 dependencies:
-  - site_audit:site_audit (>=4.0.0)
+  - site_audit:site_audit
