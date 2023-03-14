@@ -1,0 +1,23 @@
+{
+    "name": "drupal/vardot_support",
+    "description": "Metapackage for Vardot Supported Drupal sites.",
+    "type": "drupal-module",
+    "autoload": {
+        "psr-4": {
+            "Drupal\\VardotSupport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jon Pugh",
+            "email": "j.pugh@vardot.com"
+        }
+    ],
+    "homepage": "https://drupal.org/project/vardot_support",
+    "support": {
+        "issues": "https://drupal.org/project/issues/vardot_support",
+        "source": "https://git.drupalcode.org/project/vardot_support"
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
