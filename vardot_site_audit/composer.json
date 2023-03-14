@@ -1,6 +1,6 @@
 {
-  "name": "vardot/vardot_site_audit",
-  "description": "Vardot site audit : This module has a set of audits for vardot projects.",
+  "name": "drupal/vardot_site_audit",
+  "description": "Vardot Site Audit:  Additional reports for Site Audit module.",
   "type": "drupal-module",
   "minimum-stability": "dev",
   "authors": [
@@ -10,14 +10,7 @@
       "role": "Maintainer"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://bitbucket.org/Vardot/vardot_site_audit"
-    }
-  ],
   "require": {
-    "drupal/core": "~8.0 || ~9.0",
-    "drupal/site_audit": "~3"
+    "drupal/site_audit": "4.x-dev"
   }
 }

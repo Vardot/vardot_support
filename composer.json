@@ -26,6 +26,5 @@
       }
     },
     "require": {
-        "drupal/site_audit": "4.x-dev"
     }
 }
