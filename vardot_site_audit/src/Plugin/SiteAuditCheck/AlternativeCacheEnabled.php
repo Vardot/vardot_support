@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "alternative_cache_enabled",
  *  name = @Translation("Alternative cache module status"),
  *  description = @Translation("Check to see if either Memcache or Redis modules are enabled"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

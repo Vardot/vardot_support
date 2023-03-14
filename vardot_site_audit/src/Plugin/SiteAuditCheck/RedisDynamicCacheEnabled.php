@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *  id = "dynamic_cache_enabled",
  *  name = @Translation("Redis/Memecache Dynamic Cache status"),
  *  description = @Translation("Check to see if Redis/Memecache is properly configured for dynamic cache"),
- *  report = "vardot_best_practices",
+ *  checklist = "vardot_best_practices",
  *  weight = -5,
  * )
  */

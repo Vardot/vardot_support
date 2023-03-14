@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "google_analytics_enabled",
  *  name = @Translation("Google Analytics module status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_seo"
+ *  checklist = "vardot_seo"
  * )
  */
 class GoogleAnalyticsEnabled extends ModuleStatusBase {

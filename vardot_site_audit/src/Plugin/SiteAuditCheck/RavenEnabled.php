@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "raven_status",
  *  name = @Translation("Raven status"),
  *  description = @Translation("Check raven module status"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "masquerade_status",
  *  name = @Translation("Masquerade status"),
  *  description = @Translation("Check masquerade module status"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

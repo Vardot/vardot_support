@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\DatabaseSize;
  *  id = "vardot_database_size",
  *  name = @Translation("Total size"),
  *  description = @Translation("Determine the size of the database."),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -1,
  * )
  */

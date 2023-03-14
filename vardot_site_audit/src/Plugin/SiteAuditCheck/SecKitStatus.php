@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "sec_kit_status",
  *  name = @Translation("Security kit module status"),
  *  description = @Translation("Check Security kit module status"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

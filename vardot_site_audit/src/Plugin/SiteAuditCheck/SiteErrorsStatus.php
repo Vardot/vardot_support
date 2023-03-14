@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "site_errors_status",
  *  name = @Translation("Site Errors Status"),
  *  description = @Translation("Check site errors status"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

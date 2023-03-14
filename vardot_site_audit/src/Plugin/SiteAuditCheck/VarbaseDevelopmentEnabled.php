@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "varbase_development_enabled",
  *  name = @Translation("Varbase development module status"),
  *  description = @Translation("Check to see if varbase_development enabled"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

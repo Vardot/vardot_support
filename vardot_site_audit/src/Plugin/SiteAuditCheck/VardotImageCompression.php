@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "vardot_image_compression",
  *  name = @Translation("Image Compression"),
  *  description = @Translation("Check image compression quality"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "twig_cache_enable",
  *  name = @Translation("Twig cache"),
  *  description = @Translation("Verify that Twig cache is enabled and not in debug mode."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class TwigCacheEnabled extends SiteAuditCheckBase {

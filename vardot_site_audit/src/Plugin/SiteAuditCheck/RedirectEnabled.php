@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "redirect_enabled",
  *  name = @Translation("Redirect module status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_seo"
+ *  checklist = "vardot_seo"
  * )
  */
 class RedirectEnabled extends ModuleStatusBase {

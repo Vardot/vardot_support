@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ContentFieldEnabled;
  *  id = "vardot_content_field_enabled",
  *  name = @Translation("Field status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_seo",
+ *  checklist = "vardot_seo",
  *  weight = -5,
  * )
  */

@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ViewsEnabled;
  *  id = "vardot_views_enabled",
  *  name = @Translation("Views status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

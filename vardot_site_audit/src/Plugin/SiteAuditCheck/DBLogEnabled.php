@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "dblog_enabled",
  *  name = @Translation("Database Logging module status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

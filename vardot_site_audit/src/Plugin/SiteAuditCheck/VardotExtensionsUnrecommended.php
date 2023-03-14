@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ExtensionsUnrecommended;
  *  id = "vardot_extensions_unrecommended",
  *  name = @Translation("Not recommended"),
  *  description = @Translation("Check for unrecommended modules."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotExtensionsUnrecommended extends ExtensionsUnrecommended {}

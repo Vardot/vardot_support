@@ -12,7 +12,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ViewsCacheOutput;
  *  id = "vardot_views_cache_output",
  *  name = @Translation("Rendered output caching"),
  *  description = @Translation("Check to see if raw rendered output is being cached."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotViewsCacheOutput extends ViewsCacheOutput {

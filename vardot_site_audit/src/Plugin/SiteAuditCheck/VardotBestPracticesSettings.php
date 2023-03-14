@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\BestPracticesSettings;
  *  id = "vardot_best_practices_settings",
  *  name = @Translation("sites/default/settings.php"),
  *  description = @Translation("Check if the configuration file exists."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotBestPracticesSettings extends BestPracticesSettings {}

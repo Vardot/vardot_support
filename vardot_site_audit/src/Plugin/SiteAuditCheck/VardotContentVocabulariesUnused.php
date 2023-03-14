@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ContentVocabulariesUnused;
  *  id = "vardot_content_vocabularies_unused",
  *  name = @Translation("Unused vocabularies"),
  *  description = @Translation("Check for unused vocabularies"),
- *  report = "vardot_seo",
+ *  checklist = "vardot_seo",
  *  weight = 7,
  * )
  */

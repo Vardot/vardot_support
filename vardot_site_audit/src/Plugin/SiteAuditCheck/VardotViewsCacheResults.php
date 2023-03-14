@@ -12,7 +12,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ViewsCacheResults;
  *  id = "vardot_views_cache_results",
  *  name = @Translation("Query results caching"),
  *  description = @Translation("Check to see if raw query results are being cached."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotViewsCacheResults extends ViewsCacheResults {

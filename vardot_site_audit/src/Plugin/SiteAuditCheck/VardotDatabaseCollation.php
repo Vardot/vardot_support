@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\DatabaseCollation;
  *  id = "vardot_database_collation",
  *  name = @Translation("Collations"),
  *  description = @Translation("Check to see if there are any tables that aren't using UTF-8."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotDatabaseCollation extends DatabaseCollation {}

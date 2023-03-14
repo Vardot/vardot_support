@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\CachePreprocessJS;
  *  id = "vardot_cache_preprocess_js",
  *  name = @Translation("Aggregate and compress JS files in Drupal."),
  *  description = @Translation("Verify that Drupal is aggregating and compressing JS."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotCachePreprocessJS extends CachePreprocessJS {}

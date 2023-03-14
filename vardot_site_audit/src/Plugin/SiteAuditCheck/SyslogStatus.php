@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "syslog_status",
  *  name = @Translation("SyslogStatus module status"),
  *  description = @Translation("Check to see syslog if enabled"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

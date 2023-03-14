@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\UsersCountBlocked;
  *  id = "vardot_users_count_blocked",
  *  name = @Translation("Count Blocked"),
  *  description = @Translation("Total number of blocked Drupal users."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotUsersCountBlocked extends UsersCountBlocked {}

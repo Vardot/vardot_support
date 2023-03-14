@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ContentDuplicateTitles;
  *  id = "vardot_content_duplicate_titles",
  *  name = @Translation("Duplicate titles"),
  *  description = @Translation("Scan nodes for duplicate titles within a particular content type"),
- *  report = "vardot_seo"
+ *  checklist = "vardot_seo"
  * )
  */
 class VardotContentDuplicateTitles extends ContentDuplicateTitles {}

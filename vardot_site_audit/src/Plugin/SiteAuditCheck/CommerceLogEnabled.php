@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "commerce_log_enabled",
  *  name = @Translation("Commerce log module status"),
  *  description = @Translation("Check to see enabled"),
- *  report = "vardot_best_practices",
+ *  checklist = "vardot_best_practices",
  *  weight = -5,
  * )
  */

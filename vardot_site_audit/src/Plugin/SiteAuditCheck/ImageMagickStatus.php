@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheckBase;
  *  id = "image_magick_status",
  *  name = @Translation("ImageMagick Status"),
  *  description = @Translation("Check ImageMagick status"),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

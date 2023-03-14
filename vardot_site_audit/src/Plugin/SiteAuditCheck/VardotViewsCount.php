@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ViewsCount;
  *  id = "vardot_views_count",
  *  name = @Translation("Count"),
  *  description = @Translation("Number of enabled Views."),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -1,
  * )
  */

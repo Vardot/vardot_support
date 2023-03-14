@@ -9,7 +9,7 @@ namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
  *  id = "ultimate_cron_enabled",
  *  name = @Translation("Ultimate Cron module status"),
  *  description = @Translation("Check to see if enabled"),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class UltimateCronEnabled extends ModuleStatusBase {

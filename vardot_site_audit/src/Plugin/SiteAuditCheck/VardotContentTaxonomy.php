@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\ContentTaxonomy;
  *  id = "vardot_content_taxonomy",
  *  name = @Translation("Taxonomy status"),
  *  description = @Translation("Check if Taxonomy module is enabled"),
- *  report = "vardot_seo",
+ *  checklist = "vardot_seo",
  *  weight = 5,
  * )
  */

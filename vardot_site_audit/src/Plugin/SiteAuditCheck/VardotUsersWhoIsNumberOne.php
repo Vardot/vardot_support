@@ -13,7 +13,7 @@ use Drupal\user\Entity\User;
  *  id = "vardot_users_who_is_number_one",
  *  name = @Translation("Identify UID #1"),
  *  description = @Translation("Show username and email of UID #1."),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -1,
  * )
  */

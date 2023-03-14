@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\UsersCountAll;
  *  id = "vardot_users_count_all",
  *  name = @Translation("Count All"),
  *  description = @Translation("Total number of Drupal users."),
- *  report = "vardot_performance",
+ *  checklist = "vardot_performance",
  *  weight = -5,
  * )
  */

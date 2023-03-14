@@ -11,7 +11,7 @@ use Drupal\site_audit\Plugin\SiteAuditCheck\BestPracticesSitesSuperfluous;
  *  id = "vardot_best_practices_sites_superflouous",
  *  name = @Translation("Superfluous files in /sites"),
  *  description = @Translation("Detect unnecessary files."),
- *  report = "vardot_performance"
+ *  checklist = "vardot_performance"
  * )
  */
 class VardotBestPracticesSitesSuperfluous extends BestPracticesSitesSuperfluous {}
