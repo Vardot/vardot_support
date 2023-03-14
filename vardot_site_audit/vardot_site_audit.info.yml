@@ -4,4 +4,4 @@ description: Additional reports for Site Audit module.
 core_version_requirement: ^8 || ^9 || 10^
 package: Vardot
 dependencies:
-  - site_audit:site_audit (>=4.0.0)
+  - site_audit:site_audit

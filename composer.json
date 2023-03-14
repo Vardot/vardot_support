@@ -19,5 +19,13 @@
         "source": "https://git.drupalcode.org/project/vardot_support"
     },
     "minimum-stability": "dev",
-    "require": {}
+    "repositories": {
+      "drupal": {
+        "type": "composer",
+        "url": "https://packages.drupal.org/8"
+      }
+    },
+    "require": {
+        "drupal/site_audit": "4.x-dev"
+    }
 }
