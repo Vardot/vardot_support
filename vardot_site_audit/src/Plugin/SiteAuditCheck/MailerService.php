@@ -27,13 +27,15 @@ class MailerService extends SiteAuditCheckBase {
   /**
    * {@inheritdoc}.
    */
-  public function getResultInfo() {}
+  public function getResultInfo() {
+    return $this->t('Mailsystem settings not found.');
+  }
 
   /**
    * {@inheritdoc}.
    */
   public function getResultPass() {
-    return $this->t('Memcache or Redis modules is enabled.');
+    return $this->t('Site is using php_mail for mail system.');
   }
 
   /**
@@ -55,6 +57,10 @@ class MailerService extends SiteAuditCheckBase {
    */
   public function calculateScore() {
     $config = \Drupal::config('mailsystem.settings')->get('defaults');
+    if (!$config) {
+      return SiteAuditCheckBase::AUDIT_CHECK_SCORE_INFO;
+    }
+
     if ($config['sender'] == 'php_mail' || $config['formatter'] == 'php_mail') {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
