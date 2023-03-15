@@ -3,7 +3,7 @@
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
 use Drupal\Core\Database\Connection;
-use Drupal\site_audit\Plugin\SiteAuditCheckBase;
+use Drupal\Core\Logger\LoggerChannelFactory;use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -36,6 +36,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
       $plugin_id,
       $plugin_definition,
       $container->get('database'),
+      $container->get('logger.factory')
     );
   }
 
@@ -48,9 +49,9 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * @param $plugin_definition.
    * @param Connection $database.
    */
-  public function __construct($cache, $configuration, $plugin_id, $plugin_definition, Connection $database) {
+  public function __construct($cache, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactory $logger_factory) {
     $this->cache = $cache;
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $database);
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $database, $logger_factory);
   }
 
   /**
@@ -88,7 +89,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
     }
   }
 
-  /** 
+  /**
    * {@inheritdoc}.
    */
   public function calculateScore() {

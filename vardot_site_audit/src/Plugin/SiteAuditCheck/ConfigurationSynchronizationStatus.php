@@ -3,7 +3,7 @@
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
 use Drupal\Core\Database\Connection;
-use Drupal\site_audit\Plugin\SiteAuditCheckBase;
+use Drupal\Core\Logger\LoggerChannelFactory;use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Config\StorageComparer;
@@ -73,6 +73,7 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
       $plugin_id,
       $plugin_definition,
       $container->get('database'),
+      $container->get('logger.factory')
     );
   }
 
@@ -91,13 +92,24 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
    * @param $plugin_id.
    * @param $plugin_definition.
    * @param Connection $database.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    */
-  public function __construct(StorageInterface $target_storage, ConfigManagerInterface $config_manager, ImportStorageTransformer $import_transformer, StorageInterface $sync_storage, $configuration, $plugin_id, $plugin_definition, Connection $database) {
+  public function __construct(StorageInterface $target_storage, ConfigManagerInterface $config_manager, ImportStorageTransformer $import_transformer, StorageInterface $sync_storage, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactory $logger_factory) {
     $this->targetStorage = $target_storage;
     $this->configManager = $config_manager;
     $this->importTransformer = $import_transformer;
     $this->syncStorage = $sync_storage;
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $database);
+
+  /**
+   * Constructor.
+   *
+   * @param $configuration
+   * @param $plugin_id
+   * @param $plugin_definition
+   * @param \Drupal\Core\Database\Connection $database
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   */
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $database, $logger_factory);
   }
 
   /**
@@ -144,7 +156,7 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
     return $this->differences;
   }
 
-  /** 
+  /**
    * {@inheritdoc}.
    */
   public function calculateScore() {
