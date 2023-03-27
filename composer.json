@@ -19,9 +19,11 @@
         "source": "https://git.drupalcode.org/project/vardot_support"
     },
     "extra": {
-        "composer-changelogs": {
-            "commit-auto": "ask"
-        }
+         "composer-changelogs": {
+             "commit-auto": "ask",
+             "commit-bin-file": "vendor/pyrech/composer-changelogs/bin/git-commit.sh",
+             "commit-message": "This is just an example. Include this extra config in your project to use this feature."
+         }
     },
     "minimum-stability": "dev",
     "repositories": {
