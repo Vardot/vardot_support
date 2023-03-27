@@ -18,6 +18,11 @@
         "issues": "https://drupal.org/project/issues/vardot_support",
         "source": "https://git.drupalcode.org/project/vardot_support"
     },
+    "extra": {
+        "composer-changelogs": {
+            "commit-auto": "ask"
+        }
+    },
     "minimum-stability": "dev",
     "repositories": {
       "drupal": {
