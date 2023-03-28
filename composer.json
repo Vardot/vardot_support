@@ -19,7 +19,8 @@
         "source": "https://git.drupalcode.org/project/vardot_support"
     },
     "bin": [
-        "scripts/git-rm-ignored"
+        "scripts/git-rm-ignored",
+        "scripts/set-permissions"
     ],
     "extra": {
          "composer-changelogs": {
