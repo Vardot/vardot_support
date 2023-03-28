@@ -18,6 +18,9 @@
         "issues": "https://drupal.org/project/issues/vardot_support",
         "source": "https://git.drupalcode.org/project/vardot_support"
     },
+    "bin": [
+        "scripts/git-rm-ignored"
+    ],
     "extra": {
          "composer-changelogs": {
              "commit-auto": "ask",
