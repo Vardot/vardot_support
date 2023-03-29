@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# Many thanks to https://stackoverflow.com/a/34435207
+#
+
+echo "This script will remove all files that are ignored by .gitignore files."
+echo "Be sure to commit your .gitignore files BEFORE running this script."
+echo ""
+echo "Stand by for removal in 3... 2.... 1...."
+sleep 3
+
+set -ex
+git rm . --cached -r
+git add -A
+git status
+set +x
+echo "Removal of ignored files has been staged for your review. To commit, run:"
+echo "git commit -m 'Removing dependencies from git repository. Thanks, drupal/vardot_support!'"
