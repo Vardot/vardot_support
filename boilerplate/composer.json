@@ -1,4 +1,21 @@
 {
+  "name": "client/project",
+  "description": "The Title of the Site",
+  "type": "project",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://www.vardot.com",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://vardot.atlassian.net/browse/X",
+    "source": "https://bitbucket.org/Vardot/y/src",
+    "chat": "https://vardot.slack.com/channels/abcdefg",
+    "hosting": "https://vardot.io"
+  },
   "extra": {
     "composer-changelogs": {
       "commit-auto": "ask",
