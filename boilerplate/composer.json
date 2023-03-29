@@ -1,0 +1,23 @@
+{
+  "extra": {
+    "composer-changelogs": {
+      "commit-auto": "ask",
+      "commit-bin-file": "vendor/pyrech/composer-changelogs/bin/git-commit.sh",
+      "commit-message": "Committing package updates..."
+    }
+  },
+  "scripts": {
+    "deploy:build": [
+      "composer --no-interaction install --no-progress --prefer-dist --optimize-autoloader"
+    ],
+    "deploy:update": [
+      "drush -y cache-rebuild",
+      "drush -y updatedb",
+      "drush -y config-import"
+    ],
+    "deploy:test": [
+      "drush status",
+      "composer outdated"
+    ]
+  }
+}
