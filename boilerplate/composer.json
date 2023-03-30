@@ -35,6 +35,14 @@
     "deploy:test": [
       "drush status",
       "composer outdated"
+    ],
+    "deploy:acquia:branch": [
+        "blt artifact:deploy --commit-msg 'Artifact Commit from Composer deploy:acquia command.' --branch build/`git rev-parse --abbrev-ref HEAD` --no-interaction"
+    ],
+    "deploy:acquia:tag": [
+        "# Latest Tags:",
+        "git tag -l --sort=committerdate | tail -5",
+        "blt artifact:deploy"
     ]
   }
 }
