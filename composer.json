@@ -42,7 +42,6 @@
         "drupal/seckit": "^2.0@dev",
         "drupal/security_review": "^2.0@dev",
         "drupal/admin_toolbar": "^3.0@dev",
-        "drupal/antibot": "^2.0@dev",
         "drupal/flood_control": "^2.3@dev",
         "pyrech/composer-changelogs": "dev-main",
         "drush/drush": "^11"
