@@ -41,7 +41,6 @@
         "drupal/site_audit": "^4.0@dev",
         "drupal/stage_file_proxy": "^2.0@dev",
         "drupal/seckit": "^2.0@dev",
-        "drupal/devel": "^5.0@dev",
         "drupal/security_review": "^2.0@dev",
         "drupal/admin_toolbar": "^3.0@dev",
         "drupal/antibot": "^2.0@dev",
