@@ -39,7 +39,6 @@
     "require": {
         "drupal/raven": "^4.0@dev",
         "drupal/site_audit": "^4.0@dev",
-        "drupal/stage_file_proxy": "^2.0@dev",
         "drupal/seckit": "^2.0@dev",
         "drupal/security_review": "^2.0@dev",
         "drupal/admin_toolbar": "^3.0@dev",
@@ -49,7 +48,8 @@
     },
     "config": {
         "allow-plugins": {
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "pyrech/composer-changelogs": true
         }
     }
 }
