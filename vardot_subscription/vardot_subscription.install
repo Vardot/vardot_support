@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update for Vardot Subscription module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function vardot_subscription_install() {
+  \Drupal::state()->set('vardot_subscription_is_active', FALSE);
+  \Drupal::state()->set('vardot_subscription_end_date', \Drupal::time()->getRequestTime());
+
+  \Drupal\site_audit_report_entity\Entity\SiteAuditReport::saveReport(t('Vardot Subscription Report'), t('Vardot Subscription module installed.'));
+
+  // Set the AR translations strings.
+  $strings = [
+    'Vardot Support (expires @date)' => [
+      'ar' => 'Vardot Support (ينتهي في @date)',
+    ],
+    'Vardot Support (Unable to get info)' => [
+      'ar' => 'Vardot Support (خطأ في الحصول على المعلومات)',
+    ],
+    'Vardot Support (expired @date)' => [
+      'ar' => 'Vardot Support (انتهى في @date)',
+    ],
+  ];
+
+  // If the site is multilingual import translations.
+  if(\Drupal::languageManager()->isMultilingual()) {
+    vardot_subsicription_import_translations($strings);
+  }
+}
+
+function vardot_subsicription_import_translations($strings) {
+  /** @var \Drupal\locale\StringDatabaseStorage $locale_storage */
+  $locale_storage = \Drupal::service('locale.storage');
+
+  // Loop through each string for translation.
+  foreach ($strings as $source => $translations) {
+    // Translation context.
+    $context = !empty($translations['context']) ? $translations['context'] : '';
+    // Removing key so to create no problem in looping.
+    unset($translations['context']);
+    // First create the translation source entry.
+    $source_param = [
+      'source' => $source,
+      'version' => \Drupal::VERSION,
+    ];
+    // If context is available.
+    if (!empty($context)) {
+      $source_param += ['context' => $context];
+    }
+
+    if (!$locale_storage->findString($source_param)) {
+      $locale_storage->createString($source_param)->save();
+    }
+
+    // Loop through all translations and save them.
+    foreach ($translations as $langcode => $translation) {
+      $conditions = ['source' => $source];
+      // If context is available.
+      if (!empty($context)) {
+        $conditions += ['context' => $context];
+      }
+      $options = ['translated' => FALSE, 'untranslated' => TRUE];
+
+      // Look for existing translation sources.
+      $data = $locale_storage->getTranslations($conditions, $options);
+      foreach ($data as $key => $value) {
+        if (isset($value->source) && $value->source == $source) {
+          // Save translation.
+          $params = [
+            'lid' => $value->lid,
+            'language' => $langcode,
+          ];
+          // If context is available.
+          if (!empty($context)) {
+            $params += ['context' => $context];
+          }
+
+          try {
+            try {
+              if ($target = $locale_storage->findTranslation($params)) {
+                $target->delete();
+              }
+            }
+            catch (\Exception $e) {
+              // This is fine, it's ok if a text is not present.
+            }
+
+            $target = $locale_storage->createTranslation($params);
+
+            $target->setPlurals([$translation])
+              ->setCustomized()
+              ->save();
+          }
+          catch (\Exception $e) {
+            \Drupal::logger('vardot subsicription')
+              ->critical('Error occurred while saving translation for @string in @langcode', [
+                '@string' => $translation,
+                '@langcode' => $langcode,
+              ]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function vardot_subscription_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+
+    // Get subscription information from state API.
+    $expires = \Drupal::state()->get('vardot_subscription_end_date');
+    $now = \Drupal::time()->getRequestTime();
+
+    $license_expired = $expires < $now;
+    $license_active = \Drupal::state()->get('vardot_subscription_is_active');
+
+    $requirements['vsd_status'] = [
+      'title' => t('Vardot Support Subscription'),
+      'value' => $license_expired?
+        t('Vardot Support Subscription expired :time ago', [
+          ':time' => \Drupal::service('date.formatter')->formatInterval($now - $expires),
+        ]):
+        t('Vardot Support Subscription is active. Expires in :time', [
+          ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+        ])
+      ,
+      'severity' => $license_active ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
+    ];
+    return $requirements;
+  }
+
+  return $requirements;
+}

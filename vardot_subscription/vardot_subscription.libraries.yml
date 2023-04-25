@@ -1,0 +1,8 @@
+support-chat-form:
+  js:
+   https://drd.vardot.io/modules/custom/drd_tweaks/js/vardot-zendesk-chat.js: { type: external }
+
+style:
+  css:
+   theme:
+    css/style.css: {}

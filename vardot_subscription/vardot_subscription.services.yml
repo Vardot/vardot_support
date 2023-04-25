@@ -1,0 +1,5 @@
+services:
+  vardot_subscription_event_subscriber:
+    class: Drupal\vardot_subscription\EventSubscriber\VardotSubscriptionEventSubscriber
+    tags:
+      - { name: event_subscriber }

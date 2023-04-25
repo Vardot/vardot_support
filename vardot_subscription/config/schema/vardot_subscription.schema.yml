@@ -1,0 +1,3 @@
+project_key:
+  type: text
+  label: 'Project key'

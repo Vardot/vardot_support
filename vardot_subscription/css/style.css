@@ -1,0 +1,18 @@
+a.toolbar-icon.vardot-inactive-subscription.toolbar-item:before {
+  background-image: url('../images/inactive-sub.png');
+  width: 16px !important;
+}
+
+a.toolbar-icon.vardot-active-subscription.toolbar-item:before {
+  background-image: url('../images/active-sub.png');
+  width: 16px !important;
+}
+a.toolbar-icon.vardot-no-info-subscription.toolbar-item:before {
+  background-image: url('../images/warning.png');
+  width: 16px !important;
+}
+
+a.acquia-active-subscription,
+a.acquia-inactive-subscription {
+  display: none;
+}

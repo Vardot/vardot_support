@@ -1,0 +1,174 @@
+<?php
+
+/**
+ * @file
+ *   Vardot Subscription widget integration.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Component\Render\FormattableMarkup;
+use \GuzzleHttp\Exception\RequestException;
+
+/**
+ * Implements hook_toolbar().
+ */
+function vardot_subscription_toolbar() {
+  // Get the current user to check the permission
+  $user = \Drupal::currentUser();
+  if ($user->hasPermission('access toolbar')) {
+    $link = [
+      '#type' => 'link',
+      '#attributes' => [
+        'class' => [
+          'toolbar-icon',
+        ],
+      ],
+    ];
+
+    // Get subscription information from state API.
+    $expires = \Drupal::state()->get('vardot_subscription_end_date');
+    $now = \Drupal::time()->getRequestTime();
+
+    $license_expired = $expires < $now;
+    $license_active = \Drupal::state()->get('vardot_subscription_is_active');
+
+    // If date has passed, show license as "Expired"
+    if ($license_expired) {
+      $label = t('Expired :time ago', [
+        ':time' => \Drupal::service('date.formatter')->formatInterval($now - $expires),
+      ]);
+      $class = "vardot-inactive-subscription";
+    }
+    // If date has not passed but license came back as inactive, show special message.
+    elseif (!$license_active) {
+      $label = t('Expires in :time.', [
+        ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+      ]);
+      $class = "vardot-inactive-subscription";
+    }
+    // Active and not expired.
+    else {
+      $label = t('Expires in :time', [
+        ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+      ]);
+      $class = "vardot-active-subscription";
+    }
+
+    // Display subscription link in toolbar.
+    $link['#title'] = t("Vardot Support (:message)", [
+      ':message' => $label,
+    ]);
+    $link['#attributes']['class'][] = $class;
+    $url = \Drupal::state()->get('vardot_subscription_support_url');
+    if (!empty($url)){
+      try {
+        $link['#url'] = Url::fromUri($url);
+      }
+      catch (InvalidArgumentException $e) {
+        \Drupal::logger('vardot')->error(t('Vardot Subscription URL (state vardot_subscription_support_url) is invalid: :url', [
+          ':url' => $url,
+        ]));
+      }
+    }
+    else {
+      $link['#url'] = Url::fromUri('https://support.vardot.com');;
+    }
+
+    return [
+      'vardot_subscription' => [
+        '#type' => 'toolbar_item',
+        'tab' => $link,
+        '#weight' => 1000,
+        '#cache' => [
+          'contexts' => [
+            'user.roles:authenticated',
+          ],
+        ],
+      ],
+    ];
+  }
+}
+
+///**
+// * Get subscription status from VPC.
+// */
+//function vardot_subscription_check_subscription($params = array()) {
+//  // Get JIRA ID saved in configurations.
+//  $project_key = \Drupal::config('vardot_subscription.settings')->get('project_key');
+//  // Get the subscription information from VPC endpoint.
+//  $endpoint = 'https://drd.vardot.io/api/v1/subscriptions?id=' . $project_key;
+//  // Set timeout for the request.
+//  try {
+//    $client = \Drupal::httpClient();
+//    $request = $client->request('GET', $endpoint, ['timeout' => 3.14]);
+//    // Expected result.
+//    $data = $request->getBody();
+//  }
+//  catch (RequestException $e) {
+//    watchdog_exception('vardot_subscription', $e->getMessage());
+//  }
+//  $subscription = json_decode($data, true);
+//  // Save retreivied information as state values.
+//  \Drupal::state()->set('vardot_subscription_start_date',$subscription[0]['vardot_subscription_start_date']);
+//  \Drupal::state()->set('vardot_subscription_end_date',$subscription[0]['vardot_subscription_end_date']);
+//
+//  // Mark subscription status according the end date.
+//  $subscription_end_date = \Drupal::state()->get('vardot_subscription_end_date');
+//  if ($subscription_end_date >= date('Y-m-d H:i:s')) {
+//    \Drupal::state()->set('vardot_subscription_is_active', TRUE);
+//  }
+//  else if ($subscription_end_date == '') {
+//    \Drupal::state()->set('vardot_subscription_is_active', FALSE);
+//  }
+//  else {
+//    \Drupal::state()->set('vardot_subscription_is_active', FALSE);
+//  }
+//}
+
+/**
+ * Implementation of hook_page_attachments_alter().
+ */
+function vardot_subscription_page_bottom(&$build){
+  // Get the current user to check the permission
+  $user = \Drupal::currentUser();
+  if ($user->hasPermission('access toolbar')) {
+
+    $build['#attached']['library'][] = 'vardot_subscription/style';
+
+    // Display the live chat widget if the subscription is active.
+    $active = \Drupal::state()->get('vardot_subscription_is_active');
+    $widget = \Drupal::state()->get('vardot_subscription_support_widget');
+    if ($active && $widget) {
+      $build['widget'] = [
+        '#access' => 'access support widget',
+        '#allowed_tags' => ['script'],
+        '#markup' => $widget,
+      ];
+    }
+  }
+}
+
+/**
+ * Implementation of hook_cron().
+ */
+function vardot_subscription_cron() {
+  // Check subscription and update config variables.
+  // vardot_subscription_check_subscription();
+}
+
+/**
+ * Implementation of hook_preprocess_html().
+ */
+function vardot_subscription_preprocess_html(&$variables) {
+
+  // Get the current user to check the permission
+  $user = \Drupal::currentUser();
+  if ($user->hasPermission('access toolbar')) {
+    // Get logged in user and save it in Drupal Settings.
+    $variables['#attached']['drupalSettings']['vardotSubscription']['username'] = $user->getAccountName();
+    $variables['#attached']['drupalSettings']['vardotSubscription']['email'] = $user->getEmail();
+  }
+}

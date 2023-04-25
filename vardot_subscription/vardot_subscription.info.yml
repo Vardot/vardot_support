@@ -1,0 +1,6 @@
+name : 'Vardot Subscriptions'
+type: module
+description : 'Vardot Support subscription widget.'
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - site_audit_send

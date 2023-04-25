@@ -1,0 +1,7 @@
+access vardot subscription settings:
+  title: 'Access Vardot Subscription settings'
+  description: 'Access the main Vardot Subscription settings page, to change general supported project Key configurations.'
+
+access support widget:
+  title: 'Access Vardot Support Chat Widget'
+  description: 'Show the support chat widget.'
