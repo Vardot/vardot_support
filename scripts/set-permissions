@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script was created using Drupal.org documentation as a guide: https://www.drupal.org/node/244924
+
 # Help menu
 print_help() {
 cat <<-HELP
