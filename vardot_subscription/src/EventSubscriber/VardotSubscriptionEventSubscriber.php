@@ -31,6 +31,11 @@ class VardotSubscriptionEventSubscriber implements EventSubscriberInterface {
    * @param SiteAuditSentEvent $event
    */
   public function onReportSent(SiteAuditSentEvent $event) {
+    
+    \Drupal::logger('vardot')->notice('Vardot Support Response Headers: :response', [
+      ':response' => print_r($event->response->getHeaders(), 1), 
+    ]);
+    
     // Save subscription end date.
     if ($expires = $event->response->getHeader('VardotSupportExpires')) {
       $expires = $expires[0];
