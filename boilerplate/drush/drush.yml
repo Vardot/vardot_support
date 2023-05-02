@@ -1,0 +1,19 @@
+# See https://www.drush.org/latest/using-drush-configuration/
+command:
+  sql:
+    dump:
+      options:
+        structure-tables-key: common
+  core:
+    rsync:
+      options:
+        mode: rlptz
+        exclude-paths: 'css:imagecache:ctools:js:tmp:php:styles'
+sql:
+  structure-tables:
+    common:
+      - cache
+      - 'cache_*'
+      - 'search_*'
+      - 'sessions'
+      - 'watchdog'
