@@ -24,7 +24,7 @@ $config['raven.settings']['environment'] = $_SERVER['SERVER_NAME'];
 /**
  * Lando
  */
-if ($_SERVER['LANDO'] === 'ON') {
+if ((bool) getenv('LANDO')) {
   require 'settings.lando.php';
 }
 
