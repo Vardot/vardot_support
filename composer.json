@@ -35,8 +35,15 @@
                 "homepage",
                 "support"
             ]
-        }
-    },
+        },
+        "drupal-scaffold": {
+            "file-mapping": {
+                "[web-root]/sites/default/settings.php": {
+                    "mode": "append",
+                    "append": "settings/scaffold-settings-include"
+                }
+            }
+        },
     "minimum-stability": "dev",
     "repositories": {
       "drupal": {

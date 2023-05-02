@@ -1,0 +1,5 @@
+
+/**
+ * Added by drupal/vardot_support.
+ */
+require DRUPAL_ROOT . "/modules/contrib/vardot_support/settings/settings.vardot.php";
