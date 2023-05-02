@@ -1,0 +1,9 @@
+# Wildcard alias: Use environment name from devshop.
+# for example:  drush @devshop.pr76
+# NOTE: Must change PROJECT and DEVSHOP_HOST to your project codename and devshop hostname.
+'*':
+  root: /var/aegir/projects/PROJECT/${env-name}/docroot
+  uri: PROJECT.${env-name}.DEVSHOP_HOST
+  host: DEVSHOP_HOST
+  user: aegir
+
