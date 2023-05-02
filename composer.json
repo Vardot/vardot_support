@@ -27,7 +27,15 @@
              "commit-auto": "ask",
              "commit-bin-file": "vendor/pyrech/composer-changelogs/bin/git-commit.sh",
              "commit-message": "This is just an example. Include this extra config in your project to use this feature."
-         }
+         },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "name",
+                "description",
+                "homepage",
+                "support"
+            ]
+        }
     },
     "minimum-stability": "dev",
     "repositories": {
