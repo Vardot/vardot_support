@@ -21,6 +21,14 @@
       "commit-auto": "ask",
       "commit-bin-file": "vendor/pyrech/composer-changelogs/bin/git-commit.sh",
       "commit-message": "Committing package updates..."
+    },
+    "drupal-core-project-message": {
+      "include-keys": [
+        "name",
+        "description",
+        "homepage",
+        "support"
+      ]
     }
   },
   "scripts": {
