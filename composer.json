@@ -5,7 +5,8 @@
     "autoload": {
         "psr-4": {
             "Drupal\\VardotSupport\\": "src/"
-        }
+        },
+        "files": ["settings/autoload.php"]
     },
     "authors": [
         {
