@@ -22,6 +22,23 @@ $settings['file_private_path'] = 'private';
 $config['raven.settings']['environment'] = $_SERVER['SERVER_NAME'];
 
 /**
+ * Backups
+ *
+ * Add to project's settings.php file to allow backups to vardot servers.
+ *
+ * $settings['vardot_backup_migrate_destination_host'] = 'dsd.vardot.io';
+ * $settings['vardot_backup_migrate_destination_user'] = 'support';
+ * $settings['vardot_backup_migrate_destination_path'] = '~/PROJECT';
+ *
+ */
+if (!empty($settings['vardot_backup_migrate_destination_host'])) {
+  require 'settings.flysystem.php';
+}
+else {
+  // @TODO: Show a warning in status page, if we can.
+}
+
+/**
  * Lando
  */
 if ((bool) getenv('LANDO')) {
