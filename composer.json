@@ -43,6 +43,11 @@
                 "mode": "append",
                 "append": "settings/scaffold-settings-include"
             }
+        },
+        "patches": {
+            "drupal/flysystem": {
+                "Issue #3354667: SFTP Support": "patches/3354667-flysystem-ftp.patch"
+            }
         }
     },
     "minimum-stability": "dev",
@@ -50,10 +55,6 @@
         "drupal": {
               "type": "composer",
               "url": "https://packages.drupal.org/8"
-        },
-        "flysystem": {
-            "type": "vcs",
-            "url": "https://git.drupalcode.org/issue/flysystem-3354667.git"
         }
     },
     "require": {
