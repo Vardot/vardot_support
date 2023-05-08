@@ -1,0 +1,131 @@
+diff --git a/src/Asset/CssCollectionOptimizer.php b/src/Asset/CssCollectionOptimizer.php
+index 4ad3876..ce0d485 100644
+--- a/src/Asset/CssCollectionOptimizer.php
++++ b/src/Asset/CssCollectionOptimizer.php
+@@ -25,7 +25,10 @@ class CssCollectionOptimizer extends DrupalCssCollectionOptimizer {
+         $file_system->delete($uri);
+       }
+     };
+-    $file_system->scanDirectory($this->getSchemeForExtension('css') . '://css', '/.*/', ['callback' => $delete_stale]);
++    $css_dir = $this->getSchemeForExtension('css') . '://css';
++    if (is_dir($css_dir)) {
++      $file_system->scanDirectory($css_dir, '/.*/', ['callback' => $delete_stale]);
++    }
+   }
+ 
+ }
+diff --git a/src/Asset/JsCollectionOptimizer.php b/src/Asset/JsCollectionOptimizer.php
+index d5883dd..972a7b2 100644
+--- a/src/Asset/JsCollectionOptimizer.php
++++ b/src/Asset/JsCollectionOptimizer.php
+@@ -25,7 +25,10 @@ class JsCollectionOptimizer extends DrupalJsCollectionOptimizer {
+         $file_system->delete($uri);
+       }
+     };
+-    $file_system->scanDirectory($this->getSchemeForExtension('js') . '://js', '/.*/', ['callback' => $delete_stale]);
++    $js_dir = $this->getSchemeForExtension('js') . '://js';
++    if (is_dir($js_dir)) {
++      $file_system->scanDirectory($js_dir, '/.*/', ['callback' => $delete_stale]);
++    }
+   }
+ 
+ }
+diff --git a/src/Flysystem/Sftp.php b/src/Flysystem/Sftp.php
+new file mode 100644
+index 0000000..655aedc
+--- /dev/null
++++ b/src/Flysystem/Sftp.php
+@@ -0,0 +1,93 @@
++<?php
++
++/**
++ * @file
++ * Contains \Drupal\flysystem_sftp\Flysystem\Sftp.
++ */
++
++namespace Drupal\flysystem_sftp\Flysystem;
++
++use Drupal\Core\Logger\RfcLogLevel;
++use Drupal\flysystem\Flysystem\Adapter\MissingAdapter;
++use Drupal\flysystem\Plugin\FlysystemPluginInterface;
++use Drupal\flysystem\Plugin\FlysystemUrlTrait;
++use League\Flysystem\Sftp\SftpAdapter;
++
++/**
++ * Drupal plugin for the "SFTP" Flysystem adapter.
++ *
++ * @Adapter(id = "sftp")
++ */
++class Sftp implements FlysystemPluginInterface {
++
++  use FlysystemUrlTrait;
++
++  /**
++   * Plugin configuration.
++   *
++   * @var array
++   */
++  protected $configuration;
++
++  /**
++   * Constructs an Sftp object.
++   *
++   * @param array $configuration
++   *   Plugin configuration array.
++   */
++  public function __construct(array $configuration) {
++    $this->configuration = $configuration;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getAdapter() {
++    try {
++      $adapter = new SftpAdapter($this->configuration);
++      $adapter->connect();
++    }
++
++    catch (\Exception $e) {
++      $adapter = new MissingAdapter();
++    }
++
++    return $adapter;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function ensure($force = FALSE) {
++    try {
++      $adapter = new SftpAdapter($this->configuration);
++      $adapter->connect();
++    }
++
++    catch (\LogicException $e) {
++      return [[
++        'severity' => RfcLogLevel::ERROR,
++        'message' => 'Unable to login to the SFTP server %host:%port with the provided credentials.',
++        'context' => [
++          '%host' => $this->configuration['host'],
++          '%port' => isset($this->configuration['port']) ? $this->configuration['port'] : 22,
++        ],
++      ]];
++    }
++
++    catch (\RuntimeException $e) {
++      return [[
++        'severity' => RfcLogLevel::ERROR,
++        'message' => 'The root %root is invalid or does not exist on the SFTP server %host:%port.',
++        'context' => [
++          '%root' => $this->configuration['root'],
++          '%host' => $this->configuration['host'],
++          '%port' => isset($this->configuration['port']) ? $this->configuration['port'] : 22,
++        ],
++      ]];
++    }
++
++    return [];
++  }
++
++}
