@@ -68,7 +68,8 @@
         "drush/drush": "^11",
         "drupal/stage_file_proxy": "^2.0",
         "drupal/backup_migrate": "^5.1@dev",
-        "drupal/backup_migrate_flysystem": "^5.0@dev"
+        "drupal/backup_migrate_flysystem": "^5.0@dev",
+        "drupal/flysystem": "2.0.x-dev"
     },
     "config": {
         "allow-plugins": {
