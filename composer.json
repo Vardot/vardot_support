@@ -38,13 +38,13 @@
             ]
         },
         "drupal-scaffold": {
-                "[web-root]/sites/default/settings.devshop.php": "settings/settings.devshop.php",
-                "[web-root]/sites/default/settings.php": {
-                    "mode": "append",
-                    "append": "settings/scaffold-settings-include"
-                }
+            "[web-root]/sites/default/settings.devshop.php": "settings/settings.devshop.php",
+            "[web-root]/sites/default/settings.php": {
+                "mode": "append",
+                "append": "settings/scaffold-settings-include"
             }
-        },
+        }
+    },
     "minimum-stability": "dev",
     "repositories": {
       "drupal": {
