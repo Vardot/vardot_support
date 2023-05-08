@@ -69,7 +69,7 @@
         "drupal/stage_file_proxy": "^2.0",
         "drupal/backup_migrate": "^5.1@dev",
         "drupal/backup_migrate_flysystem": "^5.0@dev",
-        "drupal/flysystem": "2.0.x-dev"
+        "drupal/flysystem": "3.0.x-dev as 2.0.0-beta1"
     },
     "config": {
         "allow-plugins": {
