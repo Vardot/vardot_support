@@ -43,6 +43,11 @@
                 "mode": "append",
                 "append": "settings/scaffold-settings-include"
             }
+        },
+        "patches": {
+            "drupal/backup_migrate_flysystem": {
+                "'": "x"
+            }
         }
     },
     "minimum-stability": "dev",
@@ -61,7 +66,9 @@
         "drupal/flood_control": "^2.3@dev",
         "pyrech/composer-changelogs": "dev-main",
         "drush/drush": "^11",
-        "drupal/stage_file_proxy": "^2.0"
+        "drupal/stage_file_proxy": "^2.0",
+        "drupal/backup_migrate": "^5.1@dev",
+        "drupal/backup_migrate_flysystem": "^5.0@dev"
     },
     "config": {
         "allow-plugins": {
