@@ -46,7 +46,7 @@
         },
         "patches": {
             "drupal/flysystem": {
-                 "Issue #3354667: SFTP Support": "./patches/3354667-flysystem-ftp.patch"
+                 "Issue #3354667: SFTP Support": "https://git.drupalcode.org/project/flysystem/-/merge_requests/6.patch"
             }
         }
     },
