@@ -27,4 +27,10 @@ $settings['trusted_host_patterns'] = [
   '^'.getenv('LANDO_APP_NAME').'\.localtunnel\.me$', # lando share access
 ];
 
-// @TODO: Enable development stuff here.
+// Include development mode unless LANDO_PROD_MODE is set.
+if (!(bool) getenv('LANDO_PROD_MODE')) {
+  // Include drupal's own example.settings.local.php
+  if (file_exists(DRUPAL_ROOT . "/sites/example.settings.local.php")) {
+    include(DRUPAL_ROOT . "/sites/example.settings.local.php");
+  }
+}

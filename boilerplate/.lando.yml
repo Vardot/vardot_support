@@ -9,3 +9,10 @@ config:
   database: mysql:8.0.22
   config:
     database: /dev/null
+
+services:
+  appserver:
+    overrides:
+      environment:
+        # Uncomment to disable Drupal development settings.
+        # LANDO_PROD_MODE: TRUE
