@@ -1,3 +1,17 @@
+diff --git a/composer.json b/composer.json
+index c9eedeb..392a83f 100644
+--- a/composer.json
++++ b/composer.json
+@@ -2,7 +2,8 @@
+     "name": "drupal/flysystem",
+     "type": "drupal-module",
+     "require": {
+-        "league/flysystem": "^2.0"
++        "league/flysystem": "^2.0",
++        "league/flysystem-sftp-v3": "^3.0"
+     },
+     "require-dev": {
+         "league/flysystem-memory": "^2.0"
 diff --git a/src/Asset/CssCollectionOptimizer.php b/src/Asset/CssCollectionOptimizer.php
 index 4ad3876..ce0d485 100644
 --- a/src/Asset/CssCollectionOptimizer.php
