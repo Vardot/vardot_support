@@ -1,48 +1,31 @@
 diff --git a/composer.json b/composer.json
-index c9eedeb..392a83f 100644
+index 14f8c44..0a46a85 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -2,7 +2,8 @@
-     "name": "drupal/flysystem",
-     "type": "drupal-module",
-     "require": {
--        "league/flysystem": "^2.0"
-+        "league/flysystem": "^2.0",
-+        "league/flysystem-sftp-v3": "^3.0"
-     },
-     "require-dev": {
-         "league/flysystem-memory": "^2.0"
-diff --git a/src/Asset/CssCollectionOptimizer.php b/src/Asset/CssCollectionOptimizer.php
-index 4ad3876..ce0d485 100644
---- a/src/Asset/CssCollectionOptimizer.php
-+++ b/src/Asset/CssCollectionOptimizer.php
-@@ -25,7 +25,10 @@ class CssCollectionOptimizer extends DrupalCssCollectionOptimizer {
-         $file_system->delete($uri);
-       }
-     };
--    $file_system->scanDirectory($this->getSchemeForExtension('css') . '://css', '/.*/', ['callback' => $delete_stale]);
-+    $css_dir = $this->getSchemeForExtension('css') . '://css';
-+    if (is_dir($css_dir)) {
-+      $file_system->scanDirectory($css_dir, '/.*/', ['callback' => $delete_stale]);
-+    }
-   }
- 
- }
-diff --git a/src/Asset/JsCollectionOptimizer.php b/src/Asset/JsCollectionOptimizer.php
-index d5883dd..972a7b2 100644
---- a/src/Asset/JsCollectionOptimizer.php
-+++ b/src/Asset/JsCollectionOptimizer.php
-@@ -25,7 +25,10 @@ class JsCollectionOptimizer extends DrupalJsCollectionOptimizer {
-         $file_system->delete($uri);
-       }
-     };
--    $file_system->scanDirectory($this->getSchemeForExtension('js') . '://js', '/.*/', ['callback' => $delete_stale]);
-+    $js_dir = $this->getSchemeForExtension('js') . '://js';
-+    if (is_dir($js_dir)) {
-+      $file_system->scanDirectory($js_dir, '/.*/', ['callback' => $delete_stale]);
-+    }
-   }
- 
+@@ -1,19 +1,8 @@
+ {
+-  "name": "drupal/flysystem",
+-  "type": "drupal-module",
+-  "require": {
+-    "league/flysystem": "^1.0.3",
+-    "league/flysystem-replicate-adapter": "~1.0",
+-    "twistor/flysystem-stream-wrapper": "^1.0.5"
+-  },
+-
+-  "require-dev": {
+-    "league/flysystem-memory": "~1.0"
+-  },
+-
+-  "autoload": {
+-    "psr-4": {
+-      "Drupal\\flysystem\\": "src/"
++    "name": "drupal/flysystem",
++    "type": "drupal-module",
++    "require": {
++        "league/flysystem-sftp-v3": "^3.15",
++        "league/flysystem": "^3.15"
+     }
+-  }
  }
 diff --git a/src/Flysystem/Sftp.php b/src/Flysystem/Sftp.php
 new file mode 100644
