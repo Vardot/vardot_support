@@ -7,18 +7,21 @@
 
 /**
  * Vardot Support backup server.
- */
-$schemes = [
+ * To allow customizing backup provider per-project, copy the $schemes
+ * array into the project's settings.php.
+ *
+$flysystem_schemes = [
   'vardot-support' => [
     'driver' => 'sftp',
     'config' => [
-      'host' => $settings['vardot_backup_migrate_destination_host'],
-      'username' => $settings['vardot_backup_migrate_destination_user'],
-      'password' => $settings['vardot_backup_migrate_destination_password'],
-      'root' => $settings['vardot_backup_migrate_destination_path'],
+      'host' => 'dsd.vardot.io',
+      'username' => 'customer',
+      'password' => 'password',
+      'root' => '/home/customer',
     ],
   ],
 ];
+ */
 
-// Don't forget this!
-$settings['flysystem'] = $schemes;
+// Set flysystem schemes, if any.
+$settings['flysystem'] = $flysystem_schemes ?? [];
