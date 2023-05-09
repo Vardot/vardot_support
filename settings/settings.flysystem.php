@@ -9,7 +9,7 @@
  * Vardot Support backup server.
  */
 $schemes = [
-  'vardot_data' => [
+  'vardot-support' => [
     'driver' => 'sftp',
     'config' => [
       'host' => $settings['vardot_backup_migrate_destination_host'],
