@@ -68,7 +68,8 @@
         "drush/drush": "^11",
         "drupal/stage_file_proxy": "^2.0",
         "drupal/backup_migrate": "^5.1",
-        "drupal/backup_migrate_flysystem": "^5.0"
+        "drupal/backup_migrate_flysystem": "^5.0",
+        "league/flysystem-sftp": "^1.1"
     },
     "config": {
         "allow-plugins": {
