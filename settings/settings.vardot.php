@@ -58,4 +58,10 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
   elseif (file_exists('/var/www/site-php')) {
     require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/' . $_ENV['AH_SITE_GROUP'] . '-settings.inc';
   }
+
+  // Include site local production settings if on Acquia PROD.
+  $site_local_production_settings = $app_root . '/' . $site_path . '/settings.production.php';
+  if ("prod" == getenv('AH_SITE_ENVIRONMENT') && file_exists($site_local_production_settings)) {
+    require $site_local_production_settings;
+  }
 }
