@@ -65,3 +65,36 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
     require $site_local_production_settings;
   }
 }
+
+/**
+ * Production
+ *
+ * Include settings.production.php if prod environment detected.
+ *
+ */
+switch (TRUE) {
+  // Acquia
+  case "prod" == getenv('AH_SITE_ENVIRONMENT'):
+
+  // Platform.sh
+  case "production" == getenv('PLATFORM_ENVIRONMENT_TYPE'):
+
+  // Pantheon
+  case "live" == getenv('PANTHEON_ENVIRONMENT'):
+
+  // OVH
+  case strpos(php_uname(), 'srv02.prodcloud.vardot.io') !== FALSE;
+
+  // DevShop
+  case "production" == getenv('DEVSHOP_ENVIRONMENT_TYPE'):
+
+  // Lando emulated prod mode
+  case (bool) getenv('LANDO_PROD_MODE'):
+
+  // Generic DRUPAL_ENV variable
+  case "prod" == getenv('DRUPAL_ENV'):
+
+    if (file_exists($app_root . '/' . $site_path . '/settings.production.php')) {
+      require $app_root . '/' . $site_path . '/settings.production.php';
+    }
+}
