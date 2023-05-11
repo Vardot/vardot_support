@@ -49,7 +49,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * @param $plugin_definition.
    * @param Connection $database.
    */
-  public function __construct($cache, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactory $logger_factory) {
+  public function __construct($cache, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactoryInterface $logger_factory) {
     $this->cache = $cache;
     parent::__construct($configuration, $plugin_id, $plugin_definition, $database, $logger_factory);
   }

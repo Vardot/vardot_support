@@ -94,7 +94,7 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
    * @param Connection $database.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    */
-  public function __construct(StorageInterface $target_storage, ConfigManagerInterface $config_manager, ImportStorageTransformer $import_transformer, StorageInterface $sync_storage, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactory $logger_factory) {
+  public function __construct(StorageInterface $target_storage, ConfigManagerInterface $config_manager, ImportStorageTransformer $import_transformer, StorageInterface $sync_storage, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactoryInterface $logger_factory) {
     $this->targetStorage = $target_storage;
     $this->configManager = $config_manager;
     $this->importTransformer = $import_transformer;
