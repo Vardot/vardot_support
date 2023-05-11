@@ -1,5 +1,10 @@
+<?php
 
 /**
  * Added by drupal/vardot_support.
+ * (Not Yet). Scaffolding doesn't seem to work from modules.
+ *
+ * The file below includes acquia/blt settings, Lando config, and other things globally.
  */
 require DRUPAL_ROOT . "/modules/contrib/vardot_support/settings/settings.vardot.php";
+
