@@ -1,0 +1,6 @@
+services:
+  vardot_support.commands:
+    class: \Drupal\vardot_support\Commands\ComposerCommands
+    tags:
+      - { name: drush.command }
+    arguments: ['@entity_type.manager']
