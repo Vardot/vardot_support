@@ -27,11 +27,13 @@ class ComposerCommands extends DrushCommands {
     /**
      * @warning Drupal root must be in a directory (one level) for this to work.
      */
-    $this->processManager()->shell("composer --ansi $script_name")
-      ->setWorkingDirectory(DRUPAL_ROOT . '/../')
-      ->enableOutput()
-      ->mustRun(function($type, $out) {
-        print $out;
-      });
+    foreach ($composer['scripts'][$script_name] as $command) {
+      $this->processManager()->shell($command)
+        ->setWorkingDirectory(DRUPAL_ROOT . '/../')
+        ->enableOutput()
+        ->mustRun(function($type, $out) {
+          print $out;
+        });
+    }
   }
 }
