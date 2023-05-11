@@ -1,5 +1,9 @@
 # See https://www.drush.org/latest/using-drush-configuration/
 command:
+  site:
+    alias:
+      options:
+        format: list
   sql:
     dump:
       options:
