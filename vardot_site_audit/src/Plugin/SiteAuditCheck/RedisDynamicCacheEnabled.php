@@ -3,7 +3,9 @@
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Logger\LoggerChannelFactory;use Drupal\site_audit\Plugin\SiteAuditCheckBase;
+use Drupal\Core\Logger\LoggerChannelFactory;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
