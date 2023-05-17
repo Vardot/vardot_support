@@ -15,9 +15,9 @@
  * Until then....
  */
 
-$settings['config_sync_directory'] = '../config/sync';
-$settings['file_public_path'] = 'files';
-$settings['file_private_path'] = 'private';
+$settings['config_sync_directory'] = $settings['config_sync_directory'] ?? '../config/sync';
+$settings['file_public_path'] = $settings['file_public_path'] ?? 'files';
+$settings['file_private_path'] = $settings['file_private_path'] ?? 'private';
 
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
 $config['raven.settings']['environment'] = $_SERVER['SERVER_NAME'];
