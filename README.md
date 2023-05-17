@@ -41,6 +41,4 @@ This offers a few features:
 - Sets `$settings['trusted_host_patterns']` for lndo.site and lando's "share" feature, localtunnel.me.
 - Includes Drupal's `example.settings.local.php` to enable development settings.
   - To skip this feature, set `LANDO_PROD_MODE` in lando.yml.
-
-
-
+- Disables redirect to www when using `drupal/httpswww` module.

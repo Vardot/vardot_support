@@ -48,3 +48,6 @@ if (!(bool) getenv('LANDO_PROD_MODE')) {
     include(DRUPAL_ROOT . "/sites/example.settings.local.php");
   }
 }
+
+// Do not redirect to www if using httpswww module.
+$config['httpswww.settings']['prefix'] = 'no';
