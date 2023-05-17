@@ -19,12 +19,14 @@ $databases['default']['default'] = [
 $settings['hash_salt'] = md5(getenv('LANDO_HOST_IP'));
 
 # See https://www.drupal.org/docs/getting-started/installing-drupal/trusted-host-settings
+
+# Add all lndo.site urls to trusted_host_patterns.
 $settings['trusted_host_patterns'] = [
   # Lando Proxy
-  '^'.getenv('LANDO_APP_NAME').'\.lndo\.site$',      # lando proxy access
+  '\.lndo\.site$',
 
   # Lando Share
-  '^'.getenv('LANDO_APP_NAME').'\.localtunnel\.me$', # lando share access
+  '\.localtunnel\.me$',
 ];
 
 // Include development mode unless LANDO_PROD_MODE is set.
