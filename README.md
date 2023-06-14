@@ -19,6 +19,8 @@
 
 ## Settings
 
+This module is designed to make settings.php as automatic as possible.
+
 The [settings.vardot.php](./settings/settings.vardot.php) file is designed to be included by your project's settings.php.
 
 The [settings.default.php](./settings/settings.default.php) file is designed to be copied into new projects settings.php files.
@@ -32,6 +34,16 @@ If updating a new project, review your current settings.php file and either repl
 The `drupal/vardot_support` global settings file will include the default Acquia settings file, or the `acquia/blt` settings file, if it exists and `AH_ENVIRONMENT` was detected.
 
 See [settings.vardot.php, line 54](./settings/settings.vardot.php) for details.
+
+### Custom Hosts
+
+Vardot Support module will automatically set Drupal's `$databases` connection array using environment variables, if available.
+
+To use this feature:
+
+- Add `loadEnvironment.php` file (included in `vardot/varbase_project`).
+- Add `"autoload": {"files": ["loadEnvironment.php]}` to `composer.json`.
+- Write an `.env` file to the composer root containing the database credentials.
 
 ### Lando
 
