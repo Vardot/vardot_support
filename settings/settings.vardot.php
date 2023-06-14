@@ -99,18 +99,20 @@ switch (TRUE) {
     }
 }
 
-// Global database settings from ENV vars.
-// These can be set a number of ways:
-// - settings.HOST.php can automatically detect them.
-$databases['default']['default'] = [
-  'driver' => 'mysql',
-  'database' => getenv('MYSQL_DATABASE'),
-  'username' => getenv('MYSQL_USER'),
-  'password' => getenv('MYSQL_PASSWORD'),
-  'host' => getenv('MYSQL_HOSTNAME'),
-  'port' => getenv('MYSQL_PORT'),
-  'prefix' => '',
-];
+if (empty($databases['default']['default'])) {
+  // Global database settings from ENV vars.
+  // These can be set a number of ways:
+  // - settings.HOST.php can automatically detect them.
+  $databases['default']['default'] = [
+    'driver' => 'mysql',
+    'database' => getenv('MYSQL_DATABASE'),
+    'username' => getenv('MYSQL_USER'),
+    'password' => getenv('MYSQL_PASSWORD'),
+    'host' => getenv('MYSQL_HOSTNAME'),
+    'port' => getenv('MYSQL_PORT'),
+    'prefix' => '',
+  ];
+}
 
 // @TODO: Detect appropriate namespace depending on drupal version.
 $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
