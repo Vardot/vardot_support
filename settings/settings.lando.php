@@ -6,18 +6,11 @@
 
 $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
 
-// If $lando_database_host was not set in site's settings.php file, detect multisite or use default.
+// If you have a special lando setup, such as multisite with multiple databases, add logic to your settings.php file
+// before the vardot_support include to set $lando_database_host to be the lando service name.
 if (empty($lando_database_host)) {
-
-  # If using a multisite $site_path, and a lando database exists by that name, use it.
-  list($s, $site_slug) = explode('/', $site_path);
-  if (!isset($lando_database_host) && $site_path != 'default' && isset($lando_info[$site_slug]['creds']['database'])) {
-    $lando_database_host = $site_slug;
-  }
-  else {
-    // If no $lando_database_host, use "database".
+    // Default to "database".
     $lando_database_host = 'database';
-  }
 }
 
 $databases['default']['default'] = [
@@ -25,8 +18,8 @@ $databases['default']['default'] = [
   'database' => $lando_info[$lando_database_host]['creds']['database'],
   'username' => $lando_info[$lando_database_host]['creds']['user'],
   'password' => $lando_info[$lando_database_host]['creds']['password'],
-  'host' => $lando_database_host,
-  'port' => '3306',
+  'host' => $lando_info[$lando_database_host]['internal_connection']['host'],
+  'port' => $lando_info[$lando_database_host]['internal_connection']['port'],
 ];
 $settings['hash_salt'] = md5(getenv('LANDO_HOST_IP'));
 
