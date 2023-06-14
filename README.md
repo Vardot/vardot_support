@@ -19,9 +19,13 @@
 
 ## Settings
 
-The [settings.vardot.php](./settings/settings.vardot.php) file provides default settings for various hosting providers in one place.
+The [settings.vardot.php](./settings/settings.vardot.php) file is designed to be included by your project's settings.php.
 
-To use, include (or symlink) this file to your `sites/default/settings.php` file
+The [settings.default.php](./settings/settings.default.php) file is designed to be copied into new projects settings.php files.
+
+When starting a new project with `composer create-project vardot/varbase_project`, the settings.php file will be copied automatically.
+
+If updating a new project, review your current settings.php file and either replace it or alter it to include the contents of [settings.default.php](./settings/settings.default.php). 
 
 ### Acquia
 
@@ -35,10 +39,10 @@ The `drupal/vardot_support` global settings file will include [settings.lando.ph
 
 This offers a few features:
 
+- No need to add LANDO environment detection and settings to a project's `settings.php`.
 - Automatically configures `$databases` from `LANDO_INFO`.
-- If using multisite, and a database service exists with the same name as the `sites/X` folder, The `$databases` will connect using that service's credentials.
 - Sets `$settings['hash_salt']`.
 - Sets `$settings['trusted_host_patterns']` for lndo.site and lando's "share" feature, localtunnel.me.
-- Includes Drupal's `example.settings.local.php` to enable development settings.
-  - To skip this feature, set `LANDO_PROD_MODE` in lando.yml.
+- Enables "Developer mode" automatically by including Drupal's `example.settings.local.php`. (To skip this feature, set `LANDO_PROD_MODE` in lando.yml.)
 - Disables redirect to www when using `drupal/httpswww` module.
+- More TBD.
