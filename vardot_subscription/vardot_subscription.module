@@ -36,31 +36,33 @@ function vardot_subscription_toolbar() {
     $license_active = \Drupal::state()->get('vardot_subscription_is_active');
 
     // If date has passed, show license as "Expired"
-    if ($license_expired) {
-      $label = t('Expired :time ago', [
-        ':time' => \Drupal::service('date.formatter')->formatInterval($now - $expires),
+    if (empty($expires)) {
+      $label = t('Vardot Support: inactive.');
+      $class = "vardot-inactive-subscription";
+    }
+    elseif ($license_expired) {
+      $label = t('Vardot Support: Expired on :date', [
+        ':date' => \Drupal::service('date.formatter')->format($expires),
       ]);
       $class = "vardot-inactive-subscription";
     }
     // If date has not passed but license came back as inactive, show special message.
     elseif (!$license_active) {
-      $label = t('Expires in :time.', [
-        ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+      $label = t('Vardot Support: Expires on :date.', [
+        ':date' => \Drupal::service('date.formatter')->format($expires),
       ]);
       $class = "vardot-inactive-subscription";
     }
     // Active and not expired.
     else {
-      $label = t('Expires in :time', [
-        ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+      $label = t('Vardot Support: Expires on :date', [
+        ':date' => \Drupal::service('date.formatter')->format($expires),
       ]);
       $class = "vardot-active-subscription";
     }
 
     // Display subscription link in toolbar.
-    $link['#title'] = t("Vardot Support (:message)", [
-      ':message' => $label,
-    ]);
+    $link['#title'] = $label;
     $link['#attributes']['class'][] = $class;
     $url = \Drupal::state()->get('vardot_subscription_support_url');
     if (!empty($url)){
