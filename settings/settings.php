@@ -3,14 +3,14 @@
  * @file settings.php
  *
  * This is vardot_support's default settings.php file.
- * It can replace sites/default/settings.php.
+ * It was copied into sites/default/settings.php after composer install, by Varbase\composer\ScriptHandler::createRequiredFiles
  *
- * Copy this file into place, or you can use a symlink.
- *
+ * Commit this file to your project to maintain control and provide a single place for important config that should be hard coded.
  */
 
+
 /**
- * Added by drupal/vardot_support.
+ * Vardot Support Module Settings
  *
  * The file below includes acquia/blt settings, Lando config, and other things globally.
  */
