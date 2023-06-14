@@ -9,6 +9,7 @@
 
 /**
  * Set DRUSH_OPTIONS_URI from lando info, if it exists.
+ * This has to be here because settings.lando.php is loaded too late.
  */
 if ((bool) getenv('LANDO') && empty(getenv('DRUSH_OPTIONS_URI'))) {
   $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
