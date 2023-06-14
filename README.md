@@ -37,13 +37,27 @@ See [settings.vardot.php, line 54](./settings/settings.vardot.php) for details.
 
 ### Custom Hosts
 
-Vardot Support module will automatically set Drupal's `$databases` connection array using environment variables, if available.
+To make it easier for custom host providers to inform drupal of database credentials, Vardot Support module will
+automatically set Drupal's `$databases` connection array using environment variables, if available.
 
 To use this feature:
 
 - Add `loadEnvironment.php` file (included in `vardot/varbase_project`).
 - Add `"autoload": {"files": ["loadEnvironment.php]}` to `composer.json`.
 - Write an `.env` file to the composer root containing the database credentials.
+
+For example:
+
+```
+DRUSH_OPTIONS_URI=mysite.com
+MYSQL_DATABASE=mysite
+MYSQL_HOSTNAME=localhost
+MYSQL_PASSWORD=secretpassword
+MYSQL_PORT=3306
+MYSQL_USER=mysite
+```
+
+The `varbase/varbase-project` includes these things by default.
 
 ### Lando
 
