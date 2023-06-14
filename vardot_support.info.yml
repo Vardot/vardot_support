@@ -6,5 +6,6 @@ package: Vardot
 dependencies:
   - raven:raven
   - vardot_support:vardot_site_audit
+  - vardot_support:vardot_subscriptions
   - backup_migrate:backup_migrate
   - backup_migrate_flysystem:backup_migrate_flysystem
