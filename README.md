@@ -39,6 +39,7 @@ The `drupal/vardot_support` global settings file will include [settings.lando.ph
 
 This offers a few features:
 
+- Sets `DRUSH_OPTIONS_URI` so all drush calls have the right URL set.
 - No need to add LANDO environment detection and settings to a project's `settings.php`.
 - Automatically configures `$databases` from `LANDO_INFO`.
 - Sets `$settings['hash_salt']`.
