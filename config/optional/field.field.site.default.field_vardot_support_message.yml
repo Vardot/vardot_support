@@ -1,0 +1,21 @@
+uuid: e8557019-c503-4f7e-bf85-18b5995e8d5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site.field_vardot_support_message
+    - site.site_type.default
+  module:
+    - text
+id: site.default.field_vardot_support_message
+field_name: field_vardot_support_message
+entity_type: site
+bundle: default
+label: 'Vardot Support Message'
+description: 'Enter a message to display to users.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
