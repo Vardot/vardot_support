@@ -13,7 +13,7 @@ $settings['hash_salt'] = md5(getenv('LANDO_HOST_IP'));
 $settings['trusted_host_patterns'] = [
   # Lando Proxy
   '\.lndo\.site$',
-
+  '\.internal$',
   # Lando Share
   '\.localtunnel\.me$',
 ];
