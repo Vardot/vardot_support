@@ -67,6 +67,13 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
 }
 
 /**
+ * Platform.sh
+ */
+if ((bool) getenv('PLATFORM_ENVIRONMENT')) {
+  require 'settings.lando.php';
+}
+
+/**
  * Production
  *
  * Include settings.production.php if prod environment detected.
