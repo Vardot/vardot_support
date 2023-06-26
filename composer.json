@@ -68,7 +68,8 @@
         "drupal/backup_migrate_flysystem": "^5.0",
         "league/flysystem-sftp": "^1.1",
         "vlucas/phpdotenv": "^5.5",
-        "drupal/site": "^1.2"
+        "drupal/site": "^1.2",
+        "platformsh/config-reader": "dev-master"
     },
     "config": {
         "allow-plugins": {
