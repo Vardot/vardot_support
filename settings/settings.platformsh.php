@@ -8,6 +8,9 @@
 
 use Drupal\Core\Installer\InstallerKernel;
 
+# Set ENV vars for site.module
+putenv('DRUPAL_SITE_HOST_PROVIDER=platform.sh');
+
 $platformsh = new \Platformsh\ConfigReader\Config();
 
 // Configure the database.
