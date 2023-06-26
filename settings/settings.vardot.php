@@ -64,6 +64,8 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
   if ("prod" == getenv('AH_SITE_ENVIRONMENT') && file_exists($site_local_production_settings)) {
     require $site_local_production_settings;
   }
+
+  putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
 }
 
 /**
