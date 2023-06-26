@@ -14,8 +14,6 @@ function vardot_subscription_install() {
   // Keep expiration empty until a real date is received.
   // \Drupal::state()->set('vardot_subscription_end_date', \Drupal::time()->getRequestTime());
 
-  \Drupal\site_audit_report_entity\Entity\SiteAuditReport::saveReport(t('Vardot Subscription Report'), t('Vardot Subscription module installed.'));
-
   // Set the AR translations strings.
   $strings = [
     'Vardot Support (expires @date)' => [
