@@ -120,6 +120,9 @@ if (empty($databases['default']['default'])) {
     'host' => getenv('MYSQL_HOSTNAME'),
     'port' => getenv('MYSQL_PORT'),
     'prefix' => '',
+    'init_commands' => [
+      'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+    ],
   ];
 }
 
