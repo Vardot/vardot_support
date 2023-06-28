@@ -15,6 +15,7 @@ if ((bool) getenv('LANDO') && empty(getenv('DRUSH_OPTIONS_URI'))) {
   $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
 
   // Set DRUSH_OPTIONS_URI unless already set.
+  $main_url = null;
   foreach ($lando_info['appserver']['urls'] as $url) {
     if (strpos($url, 'https') === 0) {
       if (str_contains($url, getenv('LANDO_APP_NAME'))) {
@@ -22,6 +23,9 @@ if ((bool) getenv('LANDO') && empty(getenv('DRUSH_OPTIONS_URI'))) {
       }
     }
   }
-  putenv('DRUSH_OPTIONS_URI=' . $main_url);
+
+  if ($main_url) {
+    putenv('DRUSH_OPTIONS_URI=' . $main_url);
+  }
 
 }
