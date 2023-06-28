@@ -70,7 +70,7 @@
         "vlucas/phpdotenv": "^5.5",
         "platformsh/config-reader": "dev-master",
         "drupal/operations": "^1.2",
-        "drupal/flysystem": "^2.1"
+        "drupal/flysystem": "^2.0"
     },
     "config": {
         "allow-plugins": {
