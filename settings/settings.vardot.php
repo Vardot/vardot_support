@@ -128,3 +128,5 @@ if (empty($databases['default']['default'])) {
 
 // @TODO: Detect appropriate namespace depending on drupal version.
 $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
+
+$settings['rebuild_access'] = FALSE;
