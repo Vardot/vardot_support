@@ -145,9 +145,7 @@ function vardot_subscription_page_bottom(&$build){
     $widget = \Drupal::state()->get('vardot_subscription_support_widget');
     if ($active && $widget) {
       $build['widget'] = [
-        '#access' => 'access support widget',
-        '#allowed_tags' => ['script'],
-        '#markup' => $widget,
+        '#children' => $widget,
       ];
     }
   }
