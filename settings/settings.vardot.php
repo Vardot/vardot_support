@@ -81,6 +81,7 @@ if ((bool) getenv('PLATFORM_ENVIRONMENT')) {
  * Include settings.production.php if prod environment detected.
  *
  */
+// Set DRUPAL_ENV to prod if prod environment is detected.
 switch (TRUE) {
   // Acquia
   case "prod" == getenv('AH_SITE_ENVIRONMENT'):
@@ -100,12 +101,27 @@ switch (TRUE) {
   // Lando emulated prod mode
   case (bool) getenv('LANDO_PROD_MODE'):
 
-  // Generic DRUPAL_ENV variable
-  case "prod" == getenv('DRUPAL_ENV'):
-
     if (file_exists($app_root . '/' . $site_path . '/settings.production.php')) {
       require $app_root . '/' . $site_path . '/settings.production.php';
     }
+    putenv('DRUPAL_ENV=prod');
+}
+
+// If DRUPAL_ENV is not set, assume 'dev'
+if (!(bool) getenv('DRUPAL_ENV')) {
+  putenv('DRUPAL_ENV=dev');
+}
+
+// If DRUPAL_ENV==dev, load local settings.
+if (getenv('DRUPAL_ENV') == 'dev') {
+  // Include this sites settings.local.php
+  if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+      include($app_root . '/' . $site_path . '/settings.local.php');
+  }
+  // Include drupal's own example.settings.local.php
+  elseif (file_exists($app_root . "/sites/example.settings.local.php")) {
+    include($app_root . "/sites/example.settings.local.php");
+  }
 }
 
 if (empty($databases['default']['default'])) {
@@ -130,3 +146,4 @@ if (empty($databases['default']['default'])) {
 $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
 
 $settings['rebuild_access'] = FALSE;
+

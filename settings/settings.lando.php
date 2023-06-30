@@ -21,14 +21,6 @@ $settings['trusted_host_patterns'] = [
   '\.localtunnel\.me$',
 ];
 
-// Include development mode unless LANDO_PROD_MODE is set.
-if (!(bool) getenv('LANDO_PROD_MODE')) {
-  // Include drupal's own example.settings.local.php
-  if (file_exists(DRUPAL_ROOT . "/sites/example.settings.local.php")) {
-    include(DRUPAL_ROOT . "/sites/example.settings.local.php");
-  }
-}
-
 // Do not redirect to www if using httpswww module.
 $config['httpswww.settings']['prefix'] = 'no';
 
