@@ -64,8 +64,6 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
   if ("prod" == getenv('AH_SITE_ENVIRONMENT') && file_exists($site_local_production_settings)) {
     require $site_local_production_settings;
   }
-
-  putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
 }
 
 /**
@@ -123,6 +121,37 @@ if (getenv('DRUPAL_ENV') == 'dev') {
     include($app_root . "/sites/example.settings.local.php");
   }
 }
+
+
+// Set DRUPAL_ENV to prod if prod environment is detected.
+switch (TRUE) {
+  // Acquia
+  case (bool) getenv('AH_SITE_ENVIRONMENT'):
+    putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
+    break;
+
+  // Platform.sh
+  case (bool) getenv('PLATFORM_ENVIRONMENT_TYPE'):
+    putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
+    break;
+
+  // Pantheon
+  case (bool)  getenv('PANTHEON_ENVIRONMENT'):
+    putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
+    break;
+
+  // OVH
+  // @TODO: Set DRUPAL_SITE_HOST_PROVIDER=ovh and DRUPAL_ENV=prod on OVH.
+  case strpos(php_uname(), 'srv02.prodcloud.vardot.io') !== FALSE;
+    putenv('DRUPAL_SITE_HOST_PROVIDER=ovh');
+    break;
+
+  // DevShop
+  case (bool) getenv('DEVSHOP_ENVIRONMENT'):
+    putenv('DRUPAL_SITE_HOST_PROVIDER=devshop');
+    break;
+}
+
 
 if (empty($databases['default']['default'])) {
   // Global database settings from ENV vars.
