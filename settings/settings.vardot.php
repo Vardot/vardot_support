@@ -147,7 +147,7 @@ switch (TRUE) {
     break;
 
   // DevShop
-  case (bool) getenv('DEVSHOP_ENVIRONMENT'):
+  case isset($_SERVER['DEVSHOP_ENVIRONMENT']):
     putenv('DRUPAL_SITE_HOST_PROVIDER=devshop');
     break;
 }
