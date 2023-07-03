@@ -71,8 +71,7 @@
         "platformsh/config-reader": "dev-master",
         "drupal/operations": "^1.10",
         "drupal/flysystem": "^2.0",
-        "drupal/site-site": "^1.10",
-        "drupal/site_manager-site_manager": "^1.10"
+        "drupal/site-site": "^1.10"
     },
     "config": {
         "allow-plugins": {
