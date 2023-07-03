@@ -5,7 +5,7 @@ core_version_requirement: ^8 || ^9 || ^10
 package: Vardot
 dependencies:
   - operations:site
-  - admin_toolbar
+  - admin_toolbar_tools
   - rest
   - key_auth
   - raven:raven
