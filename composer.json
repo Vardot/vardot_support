@@ -69,8 +69,10 @@
         "league/flysystem-sftp": "^1.1",
         "vlucas/phpdotenv": "^5.5",
         "platformsh/config-reader": "dev-master",
-        "drupal/operations": "^1.2",
-        "drupal/flysystem": "^2.0"
+        "drupal/operations": "^1.10",
+        "drupal/flysystem": "^2.0",
+        "drupal/site-site": "^1.10",
+        "drupal/site_manager-site_manager": "^1.10"
     },
     "config": {
         "allow-plugins": {
