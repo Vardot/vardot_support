@@ -73,3 +73,21 @@ This offers a few features:
 - Enables "Developer mode" automatically by including Drupal's `example.settings.local.php`. (To skip this feature, set `LANDO_PROD_MODE` in lando.yml.)
 - Disables redirect to www when using `drupal/httpswww` module.
 - More TBD.
+
+## Site Reporting
+
+This module uses the [Site Entity Module](https://www.drupal.org/project/site) to track status of your website, and to connect to the Vardot Support Network.
+
+When enabled, your site will send status updates to the Vardot Drupal Support Dashboard to help us ensure the quality of your website.
+
+See [Site Entity Module](https://www.drupal.org/project/site) for more information.
+
+### Site Reporting Setup
+
+1. Enable Site Entity Module: `drush en site`
+2. Visit Site Status page: Click status indicator at the top right of the screen.
+3. If Admin Toolbar
+3. Click "Settings". 
+4. Scroll down to "Site Reporting".
+5. Check "Save on Config", "Send on Save", and add the Vardot Support Dashboard API link provided by Vardot to the "Site Data Destinations" form. Optionally select Save and Send intervals.
+6. Press save and it will verify that the server can receive data.
