@@ -1,6 +1,6 @@
 # Vardot Support Module
 
-# Features
+## Features
 
 "Vardot Support" is a module used by Vardot for enhancing customer's Drupal sites by:
 
@@ -74,20 +74,78 @@ This offers a few features:
 - Disables redirect to www when using `drupal/httpswww` module.
 - More TBD.
 
-## Site Reporting
+## Vardot Drupal Support
 
 This module uses the [Site Entity Module](https://www.drupal.org/project/site) to track status of your website, and to connect to the Vardot Support Network.
 
 When enabled, your site will send status updates to the Vardot Drupal Support Dashboard to help us ensure the quality of your website.
 
-See [Site Entity Module](https://www.drupal.org/project/site) for more information.
+### Setup
 
-### Site Reporting Setup
+To connect a site to the Vardot Drupal Support Dashboard, follow these instructions:
 
-1. Enable Site Entity Module: `drush en site`
-2. Visit Site Status page: Click status indicator at the top right of the screen.
-3. If Admin Toolbar
-3. Click "Settings". 
-4. Scroll down to "Site Reporting".
-5. Check "Save on Config", "Send on Save", and add the Vardot Support Dashboard API link provided by Vardot to the "Site Data Destinations" form. Optionally select Save and Send intervals.
-6. Press save and it will verify that the server can receive data.
+#### In DSD:
+
+1. Create a new user for each client and API key.
+  1. Sign into Vardot DSD.
+  2. Create a user for the client, or use another trusted user.
+  3. Visit that user's account page (/user/X), and click "Key Authentication", then "Generate new Key" if necessary. 
+     Save the key for later.
+  4. Visit "Sites" > "Vardot DSD Settings" to view the needed settings for a client site.
+     ![Vardot DSD settings](docs/dsd.png)
+  5. Apply those settings to the client site either via settings.php or in the web UI of the client site.
+  6. Check Vardot DSD Settings page to edit the support widget and URL.
+     ![Vardot Widget settings](docs/widget.png)
+
+#### In Client Site:
+
+1. Add and enable Vardot Support module:
+
+        composer require drupal/vardot_support
+        drush en vardot_support 
+
+    You will likely have to remove some dependencies from the project. Vardot Support requires some modules. Remove them 
+  from the project to allow vardot_support to be included.
+
+2. Configure Site.module to send reports to DSD:
+   1. Open the new "About this Site" > "Settings" page under the top left menu. (/admin/about/site):
+      ![About this site menu](docs/About-this-site.png)
+   2. Ensure the settings are applied as shown on the DSD Settings page either to the client site's settings.php or manually on the "About this site > Settings" page.
+      ![Site Reporting](docs/reporting.png)
+   3. For the "Site Data Destinations" field, enter the URL of the DSD Site with the API key created on the DSD site, like so:
+   
+        > https://dsdsite.vardot.com/api/site/data?api-key=xyz
+
+   4. Configure the desired State Factors for the site under the "State" tab.
+      ![State Settings](docs/state.png)
+
+3. Set up Vardot Support Status and Remote Login Links
+   1. Get API key from the Client site. 
+      1. The DSD needs an API key from the client site to authenticate and retrieve login links.
+      2. Sign into the client site. Visit My Account > Key Authentication and click "Generate new Key".
+      3. Copy the Key and head to the DSD.
+   2. Add API key to Site Entity in DSD
+      1. Sign into DSD site.
+      2. Visit "Sites" page.
+      3. Scroll down to the Site Entity you are connecting and click the title to visit the Site Entity page.
+      4. Click the "Edit" tab.
+      5. Edit the "Vardot Support Expires" field as needed.
+      6. Fill in the "API Key" field for that site.
+      7. The API URL field can be left blank. For extra security, you could host the site under a separate domain for this API access.
+      8. Hit Save Button.
+   3. Sign into client site from DSD:
+      1. Visit the DSD Site Entity page: Click "Sites" > Site Title.
+      2. Click "Get Login Link" fieldset to expand the form.
+      3. Enter your DSD password into "Confirm Password" field. If you do not have one, ask an adminitrator to create one for you.
+      4. Press "Request login link from SITENAME".
+      5. If successful, you will see a one-time-login link in the status messages. It will only be shown once. Copy it before leaving the page.
+   4. Update client site Vardot Support status.
+      1. Now that the DSD Site Entity has the Vardot Expires date, visit the client site.
+      2. Click "About this site" > "Save Report" to send an update and retrieve the latest Vardot Support data.
+      3. Clear caches to see the updated state in the Vardot Support toolbar widget.
+      4. Confirm that the Vardot Support widget is embedded.
+
+## About
+
+For more information, contact Vardot at https://www.vardot.com/en-us/contact-us.
+
