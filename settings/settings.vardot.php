@@ -77,7 +77,7 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
  * Platform.sh
  */
 if ((bool) getenv('PLATFORM_ENVIRONMENT')) {
-  require 'settings.lando.php';
+  require 'settings.platformsh.php';
 }
 
 /**
@@ -139,12 +139,12 @@ switch (TRUE) {
 
   // Platform.sh
   case (bool) getenv('PLATFORM_ENVIRONMENT_TYPE'):
-    putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
+    putenv('DRUPAL_SITE_HOST_PROVIDER=platformsh');
     break;
 
   // Pantheon
   case (bool)  getenv('PANTHEON_ENVIRONMENT'):
-    putenv('DRUPAL_SITE_HOST_PROVIDER=acquia');
+    putenv('DRUPAL_SITE_HOST_PROVIDER=pantheon');
     break;
 
   // OVH
