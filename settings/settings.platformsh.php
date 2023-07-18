@@ -12,6 +12,13 @@ use Drupal\Core\Installer\InstallerKernel;
 putenv('DRUPAL_SITE_HOST_PROVIDER=platform.sh');
 putenv('DRUPAL_SITE_GIT_REFERENCE=' . getenv('PLATFORM_BRANCH') ?? '');
 
+# Set the GIT_REMOTE property derived from platform SH env vars.
+# The PLATFORM_GIT_HOST env var doesn't exist. If your site is hosted somewhere else, you can putenv('PLATFORM_GIT_HOST=x.y.z') before this include.
+$platformsh_git_host = getenv('PLATFORM_GIT_HOST') ?? 'git.us.platform.sh';
+$platformsh_project = getenv('PLATFORM_PROJECT');
+$platformsh_git_url = "{$platformsh_project}@{$platformsh_git_host}:{$platformsh_project}.git";
+putenv('DRUPAL_SITE_GIT_REMOTE=' . $platformsh_git_url);
+
 $platformsh = new \Platformsh\ConfigReader\Config();
 
 // Configure the database.
