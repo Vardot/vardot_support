@@ -10,7 +10,7 @@ use Drupal\Core\Installer\InstallerKernel;
 
 # Set ENV vars for site.module
 putenv('DRUPAL_SITE_HOST_PROVIDER=platform.sh');
-putenv('DRUPAL_SITE_GIT_REFERENCE=' . $platformsh->branch ?? '');
+putenv('DRUPAL_SITE_GIT_REFERENCE=' . getenv('PLATFORM_BRANCH') ?? '');
 
 $platformsh = new \Platformsh\ConfigReader\Config();
 
