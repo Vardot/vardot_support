@@ -47,6 +47,13 @@ if ((bool) getenv('LANDO')) {
 }
 
 /**
+ * DDEV
+ */
+if ((bool) getenv('IS_DDEV_PROJECT')) {
+  require 'settings.ddev.php';
+}
+
+/**
  * Acquia
  *
  * Loads settings file from acquia/blt or the environment.
