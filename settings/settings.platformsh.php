@@ -103,6 +103,13 @@ if ($platformsh->inRuntime()) {
   if (!isset($settings['file_temp_path'])) {
     $settings['file_temp_path'] = $platformsh->appDir . '/tmp';
   }
+  if (!isset($settings['file_public_path'])) {
+
+    # ADDED BY VARDOT_SUPPORT.
+    # By default, .platform.app.yaml uses sites/default/files.
+    # If you change this, you must set $settings['file_public_path'] in your own settings.php file.
+    $settings['file_public_path'] = 'sites/default/files';
+  }
 
 // Configure the default PhpStorage and Twig template cache directories.
   if (!isset($settings['php_storage']['default'])) {
