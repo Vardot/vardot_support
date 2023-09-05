@@ -4,7 +4,7 @@ description: Ensures a Drupal site's compliance with Vardot Support.
 core_version_requirement: ^8 || ^9 || ^10
 package: Vardot
 dependencies:
-  - operations:site
+  - site:site
   - admin_toolbar_tools
   - rest
   - key_auth
