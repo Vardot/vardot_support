@@ -14,6 +14,7 @@ class ComposerCommands extends DrushCommands {
    * Drush command to run composer scripts, without composer CLI.
    *
    * @param array $script_name
+   *   The script name.
    *
    * @command composer:script
    * @aliases s
@@ -31,9 +32,10 @@ class ComposerCommands extends DrushCommands {
       $this->processManager()->shell($command)
         ->setWorkingDirectory(DRUPAL_ROOT . '/../')
         ->enableOutput()
-        ->mustRun(function($type, $out) {
+        ->mustRun(function ($type, $out) {
           print $out;
         });
     }
   }
+
 }

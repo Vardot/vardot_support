@@ -45,6 +45,8 @@
         "drupal/seckit": "@stable",
         "drupal/security_review": "@stable",
         "drupal/admin_toolbar": "@stable",
+        "drupal/key_auth": "@stable",
+        "drupal/eva": "@stable",
         "drupal/flood_control": "@stable",
         "drush/drush": "@stable",
         "drupal/stage_file_proxy": "@stable",

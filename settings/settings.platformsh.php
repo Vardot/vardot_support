@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Platform.sh settings.
@@ -6,20 +7,21 @@
  * Copied from https://github.com/platformsh-templates/drupal9/blob/master/web/sites/default/settings.platformsh.php
  */
 
+use Platformsh\ConfigReader\Config;
 use Drupal\Core\Installer\InstallerKernel;
 
-# Set ENV vars for site.module
+// Set ENV vars for site.module
 putenv('DRUPAL_SITE_HOST_PROVIDER=platform.sh');
 putenv('DRUPAL_SITE_GIT_REFERENCE=' . getenv('PLATFORM_BRANCH') ?? '');
 
-# Set the GIT_REMOTE property derived from platform SH env vars.
-# The PLATFORM_GIT_HOST env var doesn't exist. If your site is hosted somewhere else, you can putenv('PLATFORM_GIT_HOST=x.y.z') before this include.
+// Set the GIT_REMOTE property derived from platform SH env vars.
+// The PLATFORM_GIT_HOST env var doesn't exist. If your site is hosted somewhere else, you can putenv('PLATFORM_GIT_HOST=x.y.z') before this include.
 $platformsh_git_host = getenv('PLATFORM_GIT_HOST') ?: 'git.us.platform.sh';
 $platformsh_project = getenv('PLATFORM_PROJECT');
 $platformsh_git_url = "{$platformsh_project}@{$platformsh_git_host}:{$platformsh_project}.git";
 putenv('DRUPAL_SITE_GIT_REMOTE=' . $platformsh_git_url);
 
-$platformsh = new \Platformsh\ConfigReader\Config();
+$platformsh = new Config();
 
 // Configure the database.
 if ($platformsh->hasRelationship('database')) {
@@ -31,7 +33,7 @@ if ($platformsh->hasRelationship('database')) {
     'password' => $creds['password'],
     'host' => $creds['host'],
     'port' => $creds['port'],
-    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])],
   ];
 }
 
@@ -42,7 +44,8 @@ if (isset($platformsh->branch)) {
   // Production type environment.
   if ($platformsh->onProduction() || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
-  } // Development type environment.
+  }
+  // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
   }
@@ -112,13 +115,13 @@ if ($platformsh->inRuntime()) {
   }
   if (!isset($settings['file_public_path'])) {
 
-    # ADDED BY VARDOT_SUPPORT.
-    # By default, .platform.app.yaml uses sites/default/files.
-    # If you change this, you must set $settings['file_public_path'] in your own settings.php file.
+    // ADDED BY VARDOT_SUPPORT.
+    // By default, .platform.app.yaml uses sites/default/files.
+    // If you change this, you must set $settings['file_public_path'] in your own settings.php file.
     $settings['file_public_path'] = 'sites/default/files';
   }
 
-// Configure the default PhpStorage and Twig template cache directories.
+  // Configure the default PhpStorage and Twig template cache directories.
   if (!isset($settings['php_storage']['default'])) {
     $settings['php_storage']['default']['directory'] = $settings['file_private_path'];
   }
@@ -146,7 +149,7 @@ $settings['trusted_host_patterns'] = ['.*'];
 // and 'drupalconfig:' into $config.
 foreach ($platformsh->variables() as $name => $value) {
   $parts = explode(':', $name);
-  list($prefix, $key) = array_pad($parts, 3, null);
+  list($prefix, $key) = array_pad($parts, 3, NULL);
   switch ($prefix) {
     // Variables that begin with `drupalsettings` or `drupal` get mapped
     // to the $settings array verbatim, even if the value is an array.
@@ -156,6 +159,7 @@ foreach ($platformsh->variables() as $name => $value) {
     case 'drupal':
       $settings[$key] = $value;
       break;
+
     // Variables that begin with `drupalconfig` get mapped to the $config
     // array.  Deeply nested variable names, with colon delimiters,
     // get mapped to deeply nested array elements. Array values

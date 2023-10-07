@@ -1,23 +1,26 @@
 <?php
+
 /**
- * @file settings.lando.php
+ * @file
+ * settings.lando.php
+ *
  * Lando Local Development Settings.
  */
 
 $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
 $settings['hash_salt'] = md5(getenv('LANDO_HOST_IP'));
 
-# Set ENV vars for site.module
+// Set ENV vars for site.module
 putenv('DRUPAL_SITE_HOST_PROVIDER=lando');
 
-# See https://www.drupal.org/docs/getting-started/installing-drupal/trusted-host-settings
+// See https://www.drupal.org/docs/getting-started/installing-drupal/trusted-host-settings
 
-# Add all lndo.site urls to trusted_host_patterns.
+// Add all lndo.site urls to trusted_host_patterns.
 $settings['trusted_host_patterns'] = [
-  # Lando Proxy
+  // Lando Proxy
   '\.lndo\.site$',
   '\.internal$',
-  # Lando Share
+  // Lando Share
   '\.localtunnel\.me$',
 ];
 

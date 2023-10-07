@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class VardotSubscriptionSettingsForm extends ConfigFormBase {
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
@@ -31,20 +31,20 @@ class VardotSubscriptionSettingsForm extends ConfigFormBase {
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => t('Save settings'),
-      '#submit' => array('vardot_subscription_settings_submit'),
+      '#submit' => ['vardot_subscription_settings_submit'],
     ];
 
     return parent::buildForm($form, $form_state);
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   public function getFormId() {
     return 'vardot_subscription_admin_settings';
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
@@ -53,7 +53,7 @@ class VardotSubscriptionSettingsForm extends ConfigFormBase {
     ];
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
@@ -65,4 +65,5 @@ class VardotSubscriptionSettingsForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
+
 }

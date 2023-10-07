@@ -2,15 +2,10 @@
 
 /**
  * @file
- *   Vardot Subscription widget integration.
+ * Vardot Subscription widget integration.
  */
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
-use Drupal\Core\Link;
-use Drupal\Component\Render\FormattableMarkup;
-use \GuzzleHttp\Exception\RequestException;
 
 /**
  * Implements hook_toolbar().
@@ -65,7 +60,7 @@ function vardot_subscription_toolbar() {
     $link['#title'] = $label;
     $link['#attributes']['class'][] = $class;
     $url = \Drupal::state()->get('vardot_subscription_support_url');
-    if (!empty($url)){
+    if (!empty($url)) {
       try {
         $link['#url'] = Url::fromUri($url);
       }
@@ -76,7 +71,7 @@ function vardot_subscription_toolbar() {
       }
     }
     else {
-      $link['#url'] = Url::fromUri('https://support.vardot.com');;
+      $link['#url'] = Url::fromUri('https://support.vardot.com');
     }
 
     return [
@@ -94,46 +89,10 @@ function vardot_subscription_toolbar() {
   }
 }
 
-///**
-// * Get subscription status from VPC.
-// */
-//function vardot_subscription_check_subscription($params = array()) {
-//  // Get JIRA ID saved in configurations.
-//  $project_key = \Drupal::config('vardot_subscription.settings')->get('project_key');
-//  // Get the subscription information from VPC endpoint.
-//  $endpoint = 'https://drd.vardot.io/api/v1/subscriptions?id=' . $project_key;
-//  // Set timeout for the request.
-//  try {
-//    $client = \Drupal::httpClient();
-//    $request = $client->request('GET', $endpoint, ['timeout' => 3.14]);
-//    // Expected result.
-//    $data = $request->getBody();
-//  }
-//  catch (RequestException $e) {
-//    watchdog_exception('vardot_subscription', $e->getMessage());
-//  }
-//  $subscription = json_decode($data, true);
-//  // Save retreivied information as state values.
-//  \Drupal::state()->set('vardot_subscription_start_date',$subscription[0]['vardot_subscription_start_date']);
-//  \Drupal::state()->set('vardot_subscription_end_date',$subscription[0]['vardot_subscription_end_date']);
-//
-//  // Mark subscription status according the end date.
-//  $subscription_end_date = \Drupal::state()->get('vardot_subscription_end_date');
-//  if ($subscription_end_date >= date('Y-m-d H:i:s')) {
-//    \Drupal::state()->set('vardot_subscription_is_active', TRUE);
-//  }
-//  else if ($subscription_end_date == '') {
-//    \Drupal::state()->set('vardot_subscription_is_active', FALSE);
-//  }
-//  else {
-//    \Drupal::state()->set('vardot_subscription_is_active', FALSE);
-//  }
-//}
-
 /**
- * Implementation of hook_page_attachments_alter().
+ * Implements hook_page_attachments_alter().
  */
-function vardot_subscription_page_bottom(&$build){
+function vardot_subscription_page_bottom(&$build) {
   // Get the current user to check the permission
   $user = \Drupal::currentUser();
   if ($user->hasPermission('access toolbar')) {
@@ -152,7 +111,7 @@ function vardot_subscription_page_bottom(&$build){
 }
 
 /**
- * Implementation of hook_cron().
+ * Implements hook_cron().
  */
 function vardot_subscription_cron() {
   // Check subscription and update config variables.
@@ -160,7 +119,7 @@ function vardot_subscription_cron() {
 }
 
 /**
- * Implementation of hook_preprocess_html().
+ * Implements hook_preprocess_html().
  */
 function vardot_subscription_preprocess_html(&$variables) {
 

@@ -16,14 +16,13 @@
  */
 
 /**
- * Backups
+ * Backups.
  *
  * Add to project's settings.php file to allow backups to vardot servers.
  *
  * $settings['vardot_backup_migrate_destination_host'] = 'dsd.vardot.io';
  * $settings['vardot_backup_migrate_destination_user'] = 'support';
  * $settings['vardot_backup_migrate_destination_path'] = '~/PROJECT';
- *
  */
 if (!empty($settings['vardot_backup_migrate_destination_host'])) {
   require 'settings.flysystem.php';
@@ -33,21 +32,21 @@ else {
 }
 
 /**
- * Lando
+ * Lando.
  */
 if ((bool) getenv('LANDO')) {
   require 'settings.lando.php';
 }
 
 /**
- * DDEV
+ * DDEV.
  */
 if ((bool) getenv('IS_DDEV_PROJECT')) {
   require 'settings.ddev.php';
 }
 
 /**
- * Acquia
+ * Acquia.
  *
  * Loads settings file from acquia/blt or the environment.
  */
@@ -67,36 +66,35 @@ if ((bool) getenv('AH_SITE_ENVIRONMENT')) {
 }
 
 /**
- * Platform.sh
+ * Platform.sh.
  */
 if ((bool) getenv('PLATFORM_ENVIRONMENT')) {
   require 'settings.platformsh.php';
 }
 
 /**
- * Production
+ * Production.
  *
  * Include settings.production.php if prod environment detected.
- *
  */
 // Set DRUPAL_ENV to prod if prod environment is detected.
 switch (TRUE) {
   // Acquia
   case "prod" == getenv('AH_SITE_ENVIRONMENT'):
 
-  // Platform.sh
+    // Platform.sh
   case "production" == getenv('PLATFORM_ENVIRONMENT_TYPE'):
 
-  // Pantheon
+    // Pantheon
   case "live" == getenv('PANTHEON_ENVIRONMENT'):
 
-  // OVH
+    // OVH
   case strpos(php_uname(), 'srv02.prodcloud.vardot.io') !== FALSE;
 
-  // DevShop
+    // DevShop
   case "production" == getenv('DEVSHOP_ENVIRONMENT_TYPE'):
 
-  // Lando emulated prod mode
+    // Lando emulated prod mode
   case (bool) getenv('LANDO_PROD_MODE'):
 
     if (file_exists($app_root . '/' . $site_path . '/settings.production.php')) {
@@ -114,11 +112,11 @@ if (!(bool) getenv('DRUPAL_ENV')) {
 if (getenv('DRUPAL_ENV') == 'dev') {
   // Include this sites settings.local.php
   if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-      include($app_root . '/' . $site_path . '/settings.local.php');
+    include $app_root . '/' . $site_path . '/settings.local.php';
   }
   // Include drupal's own example.settings.local.php
   elseif (file_exists($app_root . "/sites/example.settings.local.php")) {
-    include($app_root . "/sites/example.settings.local.php");
+    include $app_root . "/sites/example.settings.local.php";
   }
 }
 
@@ -136,7 +134,7 @@ switch (TRUE) {
     break;
 
   // Pantheon
-  case (bool)  getenv('PANTHEON_ENVIRONMENT'):
+  case (bool) getenv('PANTHEON_ENVIRONMENT'):
     putenv('DRUPAL_SITE_HOST_PROVIDER=pantheon');
     break;
 

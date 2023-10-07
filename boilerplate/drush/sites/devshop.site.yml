@@ -6,4 +6,3 @@
   uri: PROJECT.${env-name}.DEVSHOP_HOST
   host: DEVSHOP_HOST
   user: aegir
-

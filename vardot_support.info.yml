@@ -6,8 +6,8 @@ package: Vardot
 dependencies:
   - site:site
   - admin_toolbar:admin_toolbar_tools
-  - rest
-  - key_auth
+  - drupal:rest
+  - key_auth:key_auth
   - raven:raven
   - vardot_support:vardot_site_audit
   - vardot_support:vardot_subscription

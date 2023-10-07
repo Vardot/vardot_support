@@ -3,7 +3,6 @@
 namespace Drupal\vardot_site_audit\Plugin\SiteAuditCheck;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Logger\LoggerChannelFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\site_audit\Plugin\SiteAuditCheckBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -32,7 +31,7 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static (
+    return new static(
       $container->get('cache.default'),
       $configuration,
       $plugin_id,
@@ -46,10 +45,17 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * Constructs a DynamicCacheEnabled object.
    *
    * @param $cache
-   * @param $configuration.
-   * @param $plugin_id.
-   * @param $plugin_definition.
-   * @param Connection $database.
+   *   The cache.
+   * @param $configuration
+   *   The configuration.
+   * @param $plugin_id
+   *   The plugin ID.
+   * @param $plugin_definition
+   *   The plugin definition.
+   * @param \Drupal\Core\Database\Connection $database
+   *   The connection to the database.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   *   The logger factory.
    */
   public function __construct($cache, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactoryInterface $logger_factory) {
     $this->cache = $cache;
@@ -95,11 +101,10 @@ class RedisDynamicCacheEnabled extends SiteAuditCheckBase {
    * {@inheritdoc}.
    */
   public function calculateScore() {
-    if (!(get_class($this->cache) == 'Drupal\redis\Cache\PhpRedis' || get_class($this->cache) ==  'Drupal\memcache\MemcacheBackend')) {
+    if (!(get_class($this->cache) == 'Drupal\redis\Cache\PhpRedis' || get_class($this->cache) == 'Drupal\memcache\MemcacheBackend')) {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_FAIL;
     }
     return SiteAuditCheckBase::AUDIT_CHECK_SCORE_PASS;
   }
 
 }
-

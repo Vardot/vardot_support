@@ -60,7 +60,6 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
    */
   protected $differences;
 
-
   /**
    * {@inheritdoc}
    */
@@ -83,17 +82,22 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
    *
    * @param \Drupal\Core\Config\StorageInterface $target_storage
    *   The target storage.
-   * @param \Drupal\Core\Config\StorageInterface $sync_storage
-   *   The source storage.
    * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
    *   Configuration manager.
    * @param \Drupal\Core\Config\ImportStorageTransformer $import_transformer
    *   The import transformer service.
-   * @param $configuration.
-   * @param $plugin_id.
-   * @param $plugin_definition.
-   * @param Connection $database.
-   * @param LoggerChannelFactoryInterface $logger_factory
+   * @param \Drupal\Core\Config\StorageInterface $sync_storage
+   *   The source storage.
+   * @param $configuration
+   *   The configuration.
+   * @param $plugin_id
+   *   The plugin ID.
+   * @param $plugin_definition
+   *   The plugin definition.
+   * @param \Drupal\Core\Database\Connection $database
+   *   The connection to the database.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   *   The logger factory.
    */
   public function __construct(StorageInterface $target_storage, ConfigManagerInterface $config_manager, ImportStorageTransformer $import_transformer, StorageInterface $sync_storage, $configuration, $plugin_id, $plugin_definition, Connection $database, LoggerChannelFactoryInterface $logger_factory) {
     $this->targetStorage = $target_storage;
@@ -101,15 +105,15 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
     $this->importTransformer = $import_transformer;
     $this->syncStorage = $sync_storage;
 
-  /**
-   * Constructor.
-   *
-   * @param $configuration
-   * @param $plugin_id
-   * @param $plugin_definition
-   * @param \Drupal\Core\Database\Connection $database
-   * @param LoggerChannelFactoryInterface $logger_factory
-   */
+    /**
+     * Constructor.
+     *
+     * @param $configuration
+     * @param $plugin_id
+     * @param $plugin_definition
+     * @param \Drupal\Core\Database\Connection $database
+     * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+     */
     parent::__construct($configuration, $plugin_id, $plugin_definition, $database, $logger_factory);
   }
 
@@ -175,7 +179,7 @@ class ConfigurationSynchronizationStatus extends SiteAuditCheckBase {
     }
     // Loop through all the differences and changes array to one dimension.
     foreach ($change_list->getAllCollectionNames() as $colloction) {
-      foreach ($change_list->getChangelist(null, $colloction) as $op => $configs) {
+      foreach ($change_list->getChangelist(NULL, $colloction) as $configs) {
         foreach ($configs as $config) {
           if (!($config == "site_audit.settings")) {
             // Push core.extension to changes array if it has diff after filter.

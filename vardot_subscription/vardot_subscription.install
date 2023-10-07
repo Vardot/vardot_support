@@ -28,7 +28,7 @@ function vardot_subscription_install() {
   ];
 
   // If the site is multilingual import translations.
-  if(\Drupal::languageManager()->isMultilingual()) {
+  if (\Drupal::languageManager()->isMultilingual()) {
     vardot_subscription_import_translations($strings);
   }
 }
@@ -68,7 +68,7 @@ function vardot_subscription_import_translations($strings) {
 
       // Look for existing translation sources.
       $data = $locale_storage->getTranslations($conditions, $options);
-      foreach ($data as $key => $value) {
+      foreach ($data as $value) {
         if (isset($value->source) && $value->source == $source) {
           // Save translation.
           $params = [
@@ -126,13 +126,13 @@ function vardot_subscription_requirements($phase) {
 
     $requirements['vsd_status'] = [
       'title' => t('Vardot Support Subscription'),
-      'value' => $license_expired?
-        t('Vardot Support Subscription expired :time ago', [
-          ':time' => \Drupal::service('date.formatter')->formatInterval($now - $expires),
-        ]):
-        t('Vardot Support Subscription is active. Expires in :time', [
-          ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
-        ])
+      'value' => $license_expired ?
+      t('Vardot Support Subscription expired :time ago', [
+        ':time' => \Drupal::service('date.formatter')->formatInterval($now - $expires),
+      ]) :
+      t('Vardot Support Subscription is active. Expires in :time', [
+        ':time' => \Drupal::service('date.formatter')->formatInterval($expires - $now),
+      ])
       ,
       'severity' => $license_active ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
     ];
