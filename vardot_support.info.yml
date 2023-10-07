@@ -1,15 +1,13 @@
 name: Vardot Support
 type: module
-description: Ensures a Drupal site's compliance with Vardot Support.
+description: Provides all the tools needed to make a site compliant with Vardot Enterprise Support requirements.
 core_version_requirement: ^8 || ^9 || ^10
 package: Vardot
 dependencies:
   - site:site
-  - admin_toolbar_tools
+  - admin_toolbar:admin_toolbar_tools
   - rest
   - key_auth
   - raven:raven
   - vardot_support:vardot_site_audit
   - vardot_support:vardot_subscription
-  - backup_migrate:backup_migrate
-  - backup_migrate_flysystem:backup_migrate_flysystem

@@ -6,7 +6,6 @@
 
 1. A list of dependencies we want installed in every site, such as:
    - Site Audit
-   - Backup Migrate
    - Raven for Sentry support.
 2. A standard global `settings.php` file.
    - Sets standard Drupal settings across projects.
@@ -25,7 +24,7 @@ The [settings.vardot.php](./settings/settings.vardot.php) file is designed to be
 
 The [settings.default.php](./settings/settings.default.php) file is designed to be copied into new projects settings.php files.
 
-When starting a new project with `composer create-project vardot/varbase_project`, the settings.php file will be copied automatically.
+When starting a new project with `composer create-project vardot/varbase-project`, the settings.php file will be copied automatically.
 
 If updating a new project, review your current settings.php file and either replace it or alter it to include the contents of [settings.default.php](./settings/settings.default.php). 
 
@@ -42,7 +41,7 @@ automatically set Drupal's `$databases` connection array using environment varia
 
 To use this feature:
 
-- Add `loadEnvironment.php` file (included in `vardot/varbase_project`).
+- Add `loadEnvironment.php` file (included in `vardot/varbase-project`).
 - Add `"autoload": {"files": ["loadEnvironment.php]}` to `composer.json`.
 - Write an `.env` file to the composer root containing the database credentials.
 

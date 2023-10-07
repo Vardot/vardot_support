@@ -1,6 +1,6 @@
 {
     "name": "drupal/vardot_support",
-    "description": "Metapackage for Vardot Supported Drupal sites.",
+    "description": "Provides all the tools needed to make a site compliant with Vardot Enterprise Support requirements.",
     "type": "drupal-module",
     "homepage": "https://drupal.org/project/vardot_support",
     "license": "GPL-2.0-or-later",

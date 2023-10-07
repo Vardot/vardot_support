@@ -6,7 +6,7 @@ use Drupal\Component\Serialization\Json;
 use Drush\Commands\DrushCommands;
 
 /**
- * Implemts the drush commands for backup_migrate.
+ * Implements the drush commands for backup_migrate.
  */
 class ComposerCommands extends DrushCommands {
 
