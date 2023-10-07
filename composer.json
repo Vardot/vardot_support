@@ -2,6 +2,8 @@
     "name": "drupal/vardot_support",
     "description": "Metapackage for Vardot Supported Drupal sites.",
     "type": "drupal-module",
+    "homepage": "https://drupal.org/project/vardot_support",
+    "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
             "Drupal\\VardotSupport\\": "src/"
@@ -10,14 +12,45 @@
     },
     "authors": [
         {
+            "name": "Vardot",
+            "homepage": "https://www.drupal.org/vardot",
+            "role": "Sponsor & Development"
+        },
+        {
             "name": "Jon Pugh",
-            "email": "j.pugh@vardot.com"
+            "email": "j.pugh@vardot.com",
+            "role": "Maintainer - Development"
         }
     ],
-    "homepage": "https://drupal.org/project/vardot_support",
     "support": {
         "issues": "https://drupal.org/project/issues/vardot_support",
         "source": "https://git.drupalcode.org/project/vardot_support"
+    },
+    "minimum-stability": "dev",
+    "repositories": {
+        "drupal": {
+              "type": "composer",
+              "url": "https://packages.drupal.org/8"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "pyrech/composer-changelogs": true
+        }
+    },
+    "require": {
+        "drupal/raven": "@stable",
+        "drupal/site_audit": "@stable",
+        "drupal/seckit": "@stable",
+        "drupal/security_review": "@stable",
+        "drupal/admin_toolbar": "@stable",
+        "drupal/flood_control": "@stable",
+        "drush/drush": "@stable",
+        "drupal/stage_file_proxy": "@stable",
+        "pyrech/composer-changelogs": "@stable",
+        "vlucas/phpdotenv": "@stable",
+        "drupal/site": "~2.0"
     },
     "bin": [
         "scripts/git-rm-ignored",
@@ -37,45 +70,6 @@
                 "support"
             ]
         },
-        "drupal-scaffold": {
-            "[web-root]/sites/default/settings.devshop.php": "settings/settings.devshop.php",
-            "[web-root]/sites/default/settings.php": {
-                "mode": "append",
-                "append": "settings/scaffold-settings-include"
-            }
-        },
-        "patches": {
-        }
-    },
-    "minimum-stability": "dev",
-    "repositories": {
-        "drupal": {
-              "type": "composer",
-              "url": "https://packages.drupal.org/8"
-        }
-    },
-    "require": {
-        "drupal/raven": "^4.0@dev",
-        "drupal/site_audit": "^4.0",
-        "drupal/seckit": "^2.0@dev",
-        "drupal/security_review": "^2.0@dev",
-        "drupal/admin_toolbar": "^3.0@dev",
-        "drupal/flood_control": "^2.3@dev",
-        "pyrech/composer-changelogs": "dev-main",
-        "drush/drush": "^11",
-        "drupal/stage_file_proxy": "^2.0",
-        "drupal/backup_migrate": "^5.1",
-        "drupal/backup_migrate_flysystem": "^5.0",
-        "league/flysystem-sftp": "^1.1",
-        "vlucas/phpdotenv": "^5.5",
-        "platformsh/config-reader": "dev-master",
-        "drupal/flysystem": "^2.0",
-        "drupal/site": "^2.0@beta"
-    },
-    "config": {
-        "allow-plugins": {
-            "php-http/discovery": true,
-            "pyrech/composer-changelogs": true
-        }
+        "patches": { }
     }
 }
