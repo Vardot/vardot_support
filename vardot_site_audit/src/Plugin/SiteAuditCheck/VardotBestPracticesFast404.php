@@ -21,7 +21,7 @@ class VardotBestPracticesFast404 extends BestPracticesFast404 {
    * {@inheritdoc}.
    */
   public function calculateScore() {
-    $path = DRUPAL_ROOT . '/' . \Drupal::service('site.path') . '/settings.fast404.php';
+    $path = DRUPAL_ROOT . '/' . \Drupal::getContainer()->getParameter('site.path') . '/settings.fast404.php';
 
     if (!file_exists($path)) {
       return SiteAuditCheckBase::AUDIT_CHECK_SCORE_WARN;
